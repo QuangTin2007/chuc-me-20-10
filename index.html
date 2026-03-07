@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💛 Chúc Mừng 8/3 Mẹ Yêu!</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Baloo+2:wght@400;600;800&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sun:#f5c518;--warm:#f4854e;--peach:#fde8d0;--soft:#fff9f0;
+  --green:#5a9e58;--brown:#7a4f2e;--text:#5a3010;--amber:#e07030;
+}
+body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;overflow-x:hidden}
+
+/* PETALS */
+.petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.pt{position:absolute;animation:fall linear infinite;opacity:0.7}
+@keyframes fall{0%{transform:translateY(-60px) rotate(0deg);opacity:.8}100%{transform:translateY(110vh) rotate(400deg);opacity:0}}
+
+/* PAGES */
+.page{display:none;min-height:100vh;position:relative;z-index:1;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.2rem;text-align:center}
+.page.active{display:flex}
+
+/* ============ PAGE 1 ============ */
+#p1{background:linear-gradient(170deg,#fff7e0 0%,#ffe8b0 45%,#ffd280 100%)}
+.sun-icon{font-size:clamp(4rem,16vw,7rem);animation:spinSun 12s linear infinite;display:block;line-height:1;margin-bottom:.3rem}
+@keyframes spinSun{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.flower-top{font-size:clamp(2.5rem,9vw,4.5rem);letter-spacing:4px;margin-bottom:.5rem}
+#p1 h1{font-family:'Dancing Script',cursive;font-size:clamp(3rem,12vw,5.5rem);color:var(--brown);line-height:1.2;text-shadow:2px 3px 0 #f5c51850;margin-bottom:.3rem}
+.tagline{font-size:clamp(1.2rem,4.5vw,1.8rem);color:var(--amber);font-weight:700;margin-bottom:1.8rem}
+.pw-card{background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border:2.5px solid #f5c842;border-radius:28px;padding:2rem 1.8rem 1.6rem;max-width:400px;width:100%;box-shadow:0 6px 32px #f5c84230}
+.pw-card label{font-size:clamp(1.1rem,4vw,1.4rem);color:var(--brown);font-weight:800;display:block;margin-bottom:.9rem}
+.pw-card input{width:100%;border:2.5px solid #f5c842;border-radius:50px;padding:.9rem 1.4rem;font-size:clamp(1.4rem,5vw,1.9rem);text-align:center;letter-spacing:8px;color:var(--brown);background:#fffdf5;outline:none;font-family:'Baloo 2',sans-serif;transition:border .3s}
+.pw-card input:focus{border-color:var(--amber)}
+.pw-btn{margin-top:1.1rem;width:100%;background:linear-gradient(135deg,#f5c518,#e07030);color:#fff;border:none;border-radius:50px;padding:1rem;font-size:clamp(1.2rem,4.5vw,1.5rem);font-family:'Dancing Script',cursive;font-weight:700;cursor:pointer;box-shadow:0 4px 18px #f5c51840;transition:transform .15s,box-shadow .15s}
+.pw-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px #f5c51860}
+.pw-err{color:#c0392b;font-size:1rem;font-weight:700;min-height:1.4rem;margin-top:.6rem}
+.flower-bot{font-size:clamp(1.8rem,6vw,3rem);letter-spacing:5px;margin-top:1.5rem}
+
+/* ============ PAGE 2 ============ */
+#p2{background:linear-gradient(160deg,#e8f5e2 0%,#d4f0c8 50%,#c5e8b0 100%)}
+#p2 h2{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,9vw,4rem);color:var(--brown);text-shadow:1px 2px 0 #6daf6b40;margin-bottom:.4rem}
+.hint-txt{font-size:clamp(1.1rem,4vw,1.5rem);color:#3a7a38;font-weight:700;margin-bottom:.5rem}
+.tap-count{font-family:'Dancing Script',cursive;font-size:clamp(1.6rem,6vw,2.4rem);color:var(--brown);margin-bottom:.8rem;min-height:2.5rem}
+
+/* THE BIG FLOWER */
+.flower-stage{position:relative;display:flex;align-items:center;justify-content:center;width:clamp(260px,80vw,360px);height:clamp(260px,80vw,360px);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.flower-stage:active .big-flower-svg{transform:scale(.88)}
+.big-flower-svg{width:100%;height:100%;transition:transform .12s;filter:drop-shadow(0 12px 32px #6daf6b55);animation:floatUp 4s ease-in-out infinite}
+@keyframes floatUp{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-22px) rotate(2deg)}}
+.ripple-ring{position:absolute;border-radius:50%;background:transparent;border:3px solid #6daf6b;animation:ripple 1.5s ease-out infinite;opacity:0}
+.ripple-ring:nth-child(2){animation-delay:.5s;width:110%;height:110%}
+.ripple-ring:nth-child(3){animation-delay:1s;width:130%;height:130%}
+@keyframes ripple{0%{opacity:.6;transform:scale(.8)}100%{opacity:0;transform:scale(1.3)}}
+.burst-emoji{position:fixed;pointer-events:none;font-size:2.6rem;animation:burstOut .9s ease forwards;z-index:9999}
+@keyframes burstOut{0%{transform:scale(.3) translateY(0);opacity:1}100%{transform:scale(2) translateY(-90px);opacity:0}}
+.tap-msg{font-size:clamp(.95rem,3.5vw,1.2rem);color:#3a7a38;font-weight:600;margin-top:.6rem}
+
+/* ============ PAGE 3 ============ */
+#p3{background:linear-gradient(160deg,#1c1208,#3a2010,#1c1208);padding:2rem 1rem;gap:1.2rem}
+#p3 h2{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3.5rem);color:#ffe8a0;text-shadow:0 0 20px #f5c51888}
+.photo-box{max-width:440px;width:100%;margin:0 auto}
+.photo-slide{display:none;animation:zoomIn .7s cubic-bezier(.34,1.56,.64,1)}
+.photo-slide.show{display:block}
+@keyframes zoomIn{0%{transform:scale(.6) rotate(-6deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.photo-frame{border:6px solid #fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px #00000099;position:relative}
+.photo-frame img{width:100%;height:auto;display:block;max-height:56vh;object-fit:cover}
+.photo-frame::after{content:'';position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 20px #f5c51830}
+.photo-num{color:#ffe8a0;font-size:clamp(1rem,3.5vw,1.3rem);font-family:'Dancing Script',cursive;text-align:center}
+.next-btn{background:linear-gradient(135deg,#f5c518,#e07030);color:#fff;border:none;border-radius:50px;padding:.85rem 2.8rem;font-size:clamp(1.1rem,4vw,1.4rem);font-family:'Dancing Script',cursive;font-weight:700;cursor:pointer;box-shadow:0 4px 18px #f5c51840;transition:transform .15s}
+.next-btn:hover{transform:translateY(-2px)}
+
+/* ============ PAGE 4 ============ */
+#p4{background:linear-gradient(150deg,#fff9f0,#fef0d0,#fff9f0);padding:2.5rem 1rem;gap:1rem}
+.letter-title{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);color:var(--brown);text-shadow:1px 2px 0 #f5c51840}
+.letter-outer{position:relative;max-width:500px;width:100%}
+.corner-deco{position:absolute;font-size:2rem;line-height:1;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.c-tl{top:-14px;left:-14px}.c-tr{top:-14px;right:-14px;animation-delay:.6s}.c-bl{bottom:-14px;left:-14px;animation-delay:1.2s}.c-br{bottom:-14px;right:-14px;animation-delay:1.8s}
+
+/* ENVELOPE */
+.envelope{cursor:pointer;display:flex;flex-direction:column;align-items:center}
+.env-svg{width:clamp(220px,72vw,340px);filter:drop-shadow(0 10px 30px #f5c51850);transition:transform .3s}
+.env-svg:hover{transform:scale(1.04) translateY(-4px)}
+.env-hint{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,4.5vw,1.6rem);color:var(--amber);margin-top:.6rem;animation:pulse 1.6s ease-in-out infinite}
+
+/* LETTER */
+.letter{display:none;background:linear-gradient(160deg,#fffdf5,#fff8e8);border:2.5px solid #f5c842;border-radius:22px;padding:2.5rem 2rem 2rem;position:relative;box-shadow:0 10px 40px #f5c51820,inset 0 0 50px #fff8e010;animation:unfold .9s cubic-bezier(.34,1.56,.64,1)}
+@keyframes unfold{0%{transform:scaleY(0);opacity:0;transform-origin:top}100%{transform:scaleY(1);opacity:1}}
+.side-flowers{position:absolute;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;font-size:1.5rem}
+.sf-l{left:6px}.sf-r{right:6px}
+.top-deco{text-align:center;font-size:1.6rem;letter-spacing:6px;margin-bottom:1rem}
+.letter-to{font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,6vw,2.8rem);color:var(--brown);text-align:center;margin-bottom:.5rem}
+.divider{text-align:center;font-size:1.2rem;letter-spacing:10px;color:#f5c842;margin:.8rem 0}
+.letter-body{font-family:'Noto Serif',serif;font-size:clamp(1.05rem,3.8vw,1.3rem);color:var(--text);line-height:2;text-align:center}
+.letter-body p{margin-bottom:.9rem}
+.letter-sign{font-family:'Dancing Script',cursive;font-size:clamp(1.5rem,5.5vw,2.2rem);color:var(--amber);text-align:right;margin-top:1.2rem}
+.sign-line{border:none;border-top:1.5px dashed #f5c842;margin:.6rem 0}
+.bottom-deco{text-align:center;font-size:1.4rem;letter-spacing:6px;margin-top:1rem}
+
+/* FLOAT UP */
+.floatup{position:fixed;pointer-events:none;animation:floatHeart 2.8s ease forwards;z-index:9999;font-size:2rem}
+@keyframes floatHeart{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-130px) scale(1.6);opacity:0}}
+</style>
+</head>
+<body>
+
+<div class="petals" id="petalsBg"></div>
+
+<!-- ========== PAGE 1 ========== -->
+<div class="page active" id="p1">
+  <span class="sun-icon">🌻</span>
+  <div class="flower-top">🌸🌼🌺🌷🌼🌸</div>
+  <h1>Chúc Mừng<br>8 Tháng 3</h1>
+  <div class="tagline">Ngày của Mẹ — Người Yêu Thương Con Nhất 💛</div>
+  <div class="pw-card">
+    <label>🔑 Nhập mật khẩu bí mật của Mẹ:</label>
+    <input type="password" id="pwInput" placeholder="••••" maxlength="10" onkeydown="if(event.key==='Enter')checkPw()">
+    <button class="pw-btn" onclick="checkPw()">🌻 Bước Vào Trang Của Mẹ 🌻</button>
+    <div class="pw-err" id="pwErr"></div>
+  </div>
+  <div class="flower-bot">🌼🌷🌸🌻🌸🌷🌼</div>
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page" id="p2">
+  <h2>🌸 Bông Hoa Dành Cho Mẹ 🌸</h2>
+  <div class="hint-txt">Chạm vào hoa 5 lần để mở điều bất ngờ! 🎁</div>
+  <div class="tap-count" id="tapCount">🌼 Chưa chạm lần nào 🌼</div>
+
+  <div class="flower-stage" id="flowerStage" onclick="tapFlower(event)">
+    <div class="ripple-ring" style="width:80%;height:80%"></div>
+    <div class="ripple-ring"></div>
+    <div class="ripple-ring"></div>
+    <svg class="big-flower-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="petal1" cx="50%" cy="85%" r="70%">
+          <stop offset="0%" stop-color="#a8e063"/>
+          <stop offset="100%" stop-color="#56ab2f"/>
+        </radialGradient>
+        <radialGradient id="petal2" cx="50%" cy="85%" r="70%">
+          <stop offset="0%" stop-color="#c3f0a0"/>
+          <stop offset="100%" stop-color="#78c850"/>
+        </radialGradient>
+        <radialGradient id="center1" cx="40%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#fff176"/>
+          <stop offset="60%" stop-color="#ffcc02"/>
+          <stop offset="100%" stop-color="#f5a623"/>
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Outer petals x8 -->
+      <g transform="translate(200,200)">
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(0)" opacity=".95"/>
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(45)" opacity=".95"/>
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(90)" opacity=".95"/>
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(135)" opacity=".95"/>
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(180)" opacity=".95"/>
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(225)" opacity=".95"/>
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(270)" opacity=".95"/>
+        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(315)" opacity=".95"/>
+        <!-- Inner petals x8 -->
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(22.5)" opacity=".85"/>
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(67.5)" opacity=".85"/>
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(112.5)" opacity=".85"/>
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(157.5)" opacity=".85"/>
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(202.5)" opacity=".85"/>
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(247.5)" opacity=".85"/>
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(292.5)" opacity=".85"/>
+        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(337.5)" opacity=".85"/>
+        <!-- Center circle -->
+        <circle cx="0" cy="0" r="58" fill="url(#center1)" filter="url(#glow)" stroke="#e8a000" stroke-width="3"/>
+        <circle cx="0" cy="0" r="40" fill="#fff176" opacity=".5"/>
+        <!-- Dots on center -->
+        <circle cx="0" cy="-30" r="5.5" fill="#c87800" opacity=".8"/>
+        <circle cx="21" cy="-21" r="5.5" fill="#c87800" opacity=".8"/>
+        <circle cx="30" cy="0" r="5.5" fill="#c87800" opacity=".8"/>
+        <circle cx="21" cy="21" r="5.5" fill="#c87800" opacity=".8"/>
+        <circle cx="0" cy="30" r="5.5" fill="#c87800" opacity=".8"/>
+        <circle cx="-21" cy="21" r="5.5" fill="#c87800" opacity=".8"/>
+        <circle cx="-30" cy="0" r="5.5" fill="#c87800" opacity=".8"/>
+        <circle cx="-21" cy="-21" r="5.5" fill="#c87800" opacity=".8"/>
+        <!-- Heart center -->
+        <text x="0" y="12" text-anchor="middle" font-size="32" fill="#c87800" opacity=".9">💛</text>
+      </g>
+      <!-- Stem -->
+      <line x1="200" y1="290" x2="200" y2="390" stroke="#4a9e40" stroke-width="12" stroke-linecap="round"/>
+      <!-- Leaves -->
+      <ellipse cx="168" cy="350" rx="30" ry="13" fill="#5ab04a" transform="rotate(-25,168,350)"/>
+      <ellipse cx="232" cy="330" rx="30" ry="13" fill="#5ab04a" transform="rotate(25,232,330)"/>
+    </svg>
+  </div>
+  <div class="tap-msg">🌿 Mỗi lần chạm là một tình yêu của con gửi đến Mẹ 🌿</div>
+</div>
+
+<!-- ========== PAGE 3 ========== -->
+<div class="page" id="p3">
+  <h2>🌻 Khoảnh Khắc Của Mẹ 🌻</h2>
+  <div class="photo-box">
+    <div class="photo-slide show" id="s0"><div class="photo-frame"><img src="https://i.ibb.co/0ydLpfkJ/z7597691488842-77889869658876dc71a7d190705d3c4f.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s1"><div class="photo-frame"><img src="https://i.ibb.co/XrJZTH64/z7597691491409-e8164e22886f7b12d645d38f4d3f08fd.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s2"><div class="photo-frame"><img src="https://i.ibb.co/zV50DBPm/z7597691498230-0c946d17129bfec99f0dc5bbf81bbeb3.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s3"><div class="photo-frame"><img src="https://i.ibb.co/NnL0cwR9/z7597691502907-0fc43016f144614f8bb67fcd2d9f1358.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s4"><div class="photo-frame"><img src="https://i.ibb.co/TDKmtmXd/z7597691505869-ef1224843bc3bda18011030db03558d1.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s5"><div class="photo-frame"><img src="https://i.ibb.co/S45XXpvY/z7597691511627-c91c7630700fd1361076873adfeeb59c.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s6"><div class="photo-frame"><img src="https://i.ibb.co/76LJB2p/z7597691514221-1b133e986b6f86f3f17b04c6e5a28d35.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s7"><div class="photo-frame"><img src="https://i.ibb.co/5hTkzc3y/z7597691514428-d37cd5ede941e2b9ba7d4aa957f11a06.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s8"><div class="photo-frame"><img src="https://i.ibb.co/ZRkFkjzN/z7597691518282-aca53c3d00cb807ef1b91af6812ee9fe.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s9"><div class="photo-frame"><img src="https://i.ibb.co/8L21C0Fv/z7597691522313-a51fa2e1ffbc8ae4370a081c38fc62d9.jpg" loading="lazy"></div></div>
+    <div class="photo-slide" id="s10"><div class="photo-frame"><img src="https://i.ibb.co/k2nsP2DH/z7597691524970-ca229d06d6ba9142b7f7113ee682556f.jpg" loading="lazy"></div></div>
+  </div>
+  <div class="photo-num" id="pNum">🌼 Ảnh 1 / 11 🌼</div>
+  <button class="next-btn" id="nxtBtn" onclick="nextPhoto()">Xem Ảnh Tiếp 🌸</button>
+</div>
+
+<!-- ========== PAGE 4 ========== -->
+<div class="page" id="p4">
+  <div class="letter-title">💌 Có Thư Gửi Mẹ Yêu 💌</div>
+  <div class="letter-outer">
+    <span class="corner-deco c-tl">🌻</span>
+    <span class="corner-deco c-tr">🌸</span>
+    <span class="corner-deco c-bl">🌼</span>
+    <span class="corner-deco c-br">🌺</span>
+
+    <!-- Envelope -->
+    <div class="envelope" id="envEl" onclick="openLetter()">
+      <svg class="env-svg" viewBox="0 0 340 230" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="envG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fffde0"/>
+            <stop offset="100%" stop-color="#ffe88a"/>
+          </linearGradient>
+        </defs>
+        <rect x="10" y="20" width="320" height="195" rx="18" fill="url(#envG)" stroke="#f5c518" stroke-width="3"/>
+        <path d="M10 20 L170 125 L330 20" fill="none" stroke="#f5c518" stroke-width="2.5"/>
+        <path d="M10 215 L125 125 M330 215 L215 125" fill="none" stroke="#f5c518" stroke-width="2"/>
+        <!-- Stamp corner -->
+        <rect x="268" y="30" width="52" height="52" rx="6" fill="#fff" stroke="#f5c518" stroke-width="2"/>
+        <text x="294" y="65" text-anchor="middle" font-size="26">🌻</text>
+        <!-- Postmark -->
+        <circle cx="170" cy="125" r="32" fill="#f5c518" opacity=".9"/>
+        <circle cx="170" cy="125" r="25" fill="#e8a000"/>
+        <text x="170" y="120" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">8/3</text>
+        <text x="170" y="135" text-anchor="middle" font-size="10" fill="#fff">💛MẸ💛</text>
+        <!-- Flower stamps -->
+        <text x="35" y="58" font-size="20">🌸</text>
+        <text x="35" y="200" font-size="20">🌼</text>
+        <text x="286" y="200" font-size="20">🌺</text>
+      </svg>
+      <div class="env-hint">✨ Nhấn để mở thư của Mẹ ✨</div>
+    </div>
+
+    <!-- Letter -->
+    <div class="letter" id="letEl">
+      <div class="side-flowers sf-l"><span>🌸</span><span>🌼</span><span>🌻</span><span>🌺</span><span>🌷</span></div>
+      <div class="side-flowers sf-r"><span>🌺</span><span>🌻</span><span>🌼</span><span>🌸</span><span>🌷</span></div>
+      <div class="top-deco">🌸 🌼 🌻 🌼 🌸</div>
+      <div class="letter-to">Gửi Mẹ Yêu Dấu 💛</div>
+      <div class="divider">🌼 ✿ 🌼 ✿ 🌼</div>
+      <div class="letter-body">
+        <p>Nhân ngày Quốc Tế Phụ Nữ 8 tháng 3,<br>con muốn nói với Mẹ rằng:</p>
+        <p>🌻 Mẹ là người phụ nữ vĩ đại nhất trong cuộc đời con. Mẹ đã hi sinh tất cả, chăm sóc con từng bữa ăn giấc ngủ, dạy con nên người.</p>
+        <p>🌸 Con lớn lên nhờ có bàn tay Mẹ. Những lúc con vấp ngã, Mẹ luôn ở đó nâng con dậy. Những lúc con buồn, giọng Mẹ là điều ấm áp nhất con được nghe.</p>
+        <p>🌼 Con biết Mẹ vất vả lắm, nhưng Mẹ chưa bao giờ để con thấy Mẹ khổ. Đó là tình yêu của Mẹ — lặng lẽ mà bao la như trời đất.</p>
+        <p>🌺 Chúc Mẹ luôn mạnh khỏe, bình an và hạnh phúc. Con sẽ luôn cố gắng để Mẹ tự hào về con!</p>
+        <p><strong>Chúc Mừng 8 Tháng 3, Mẹ nhé! 🌻💛🌻</strong></p>
+      </div>
+      <div class="divider">🌻 ✿ 🌻 ✿ 🌻</div>
+      <hr class="sign-line">
+      <div class="letter-sign">Con yêu Mẹ nhiều lắm! 💛<br>Con của Mẹ — <em>Tín</em> 🌸</div>
+      <div class="bottom-deco">🌸 🌼 🌻 🌼 🌸</div>
+    </div>
+  </div>
+  <div style="font-size:clamp(2rem,7vw,3rem);margin-top:1.5rem;animation:floatUp 3s ease-in-out infinite">🌻🌸🌼🌺🌷🌼🌸🌻</div>
+</div>
+
+<script>
+// PETALS
+const petals=['🌸','🌼','🌺','🌻','🌷','🍀','✿'];
+const bg=document.getElementById('petalsBg');
+for(let i=0;i<30;i++){
+  const d=document.createElement('div');
+  d.className='pt';
+  d.textContent=petals[Math.floor(Math.random()*petals.length)];
+  d.style.left=Math.random()*100+'%';
+  d.style.fontSize=(1.1+Math.random()*1.6)+'rem';
+  d.style.animationDuration=(7+Math.random()*11)+'s';
+  d.style.animationDelay=(-Math.random()*18)+'s';
+  bg.appendChild(d);
+}
+
+// PASSWORD
+function checkPw(){
+  const v=document.getElementById('pwInput').value.trim();
+  const err=document.getElementById('pwErr');
+  if(v==='0803'){
+    err.textContent='';
+    goPage('p2');
+  } else {
+    err.textContent='❌ Mật khẩu chưa đúng rồi, thử lại nha Mẹ!';
+    document.getElementById('pwInput').value='';
+  }
+}
+
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// FLOWER TAP
+let taps=0;
+const msgs=['🌼 Chạm 1 lần rồi! 🌼','🌸 Chạm 2 lần! Con yêu Mẹ! 🌸','🌻 3 lần rồi! Sắp xong rồi! 🌻','🌺 4 lần! Còn 1 lần nữa thôi! 🌺','🎉 5 lần! Mở bí mật nào! 🎉'];
+const bEmojis=['🌻','🌸','🌼','🌺','⭐','🍀','✨','💛'];
+
+function tapFlower(e){
+  if(taps>=5) return;
+  taps++;
+  document.getElementById('tapCount').textContent=msgs[taps-1];
+
+  // Burst
+  for(let i=0;i<4;i++){
+    const b=document.createElement('div');
+    b.className='burst-emoji';
+    b.textContent=bEmojis[Math.floor(Math.random()*bEmojis.length)];
+    const angle=Math.random()*360;
+    const dist=50+Math.random()*60;
+    b.style.left=(e.clientX+Math.cos(angle)*dist-15)+'px';
+    b.style.top=(e.clientY+Math.sin(angle)*dist-15)+'px';
+    b.style.animationDelay=(i*0.08)+'s';
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),1000);
+  }
+
+  // Float up
+  for(let i=0;i<3;i++){
+    const f=document.createElement('div');
+    f.className='floatup';
+    f.textContent=bEmojis[Math.floor(Math.random()*bEmojis.length)];
+    f.style.left=(e.clientX+Math.random()*40-20)+'px';
+    f.style.top=(e.clientY-10)+'px';
+    f.style.animationDelay=(i*0.15)+'s';
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),3000);
+  }
+
+  if(taps>=5){
+    document.getElementById('flowerStage').style.pointerEvents='none';
+    setTimeout(()=>goPage('p3'),900);
+  }
+}
+
+// PHOTOS
+let cur=0;const total=11;
+function nextPhoto(){
+  document.getElementById('s'+cur).classList.remove('show');
+  cur++;
+  if(cur>=total){setTimeout(()=>goPage('p4'),300);return;}
+  document.getElementById('s'+cur).classList.add('show');
+  document.getElementById('pNum').textContent='🌼 Ảnh '+(cur+1)+' / '+total+' 🌼';
+  if(cur===total-1) document.getElementById('nxtBtn').textContent='Mở Thư Của Mẹ 💌';
+}
+
+// LETTER
+function openLetter(){
+  document.getElementById('envEl').style.display='none';
+  document.getElementById('letEl').style.display='block';
+  for(let i=0;i<15;i++){
+    setTimeout(()=>{
+      const f=document.createElement('div');
+      f.className='floatup';
+      f.textContent=['🌻','🌸','🌼','🌺','🌷','💛'][Math.floor(Math.random()*6)];
+      f.style.left=Math.random()*85+'%';
+      f.style.bottom='30%';
+      f.style.fontSize=(1.4+Math.random()*1.4)+'rem';
+      document.body.appendChild(f);
+      setTimeout(()=>f.remove(),3000);
+    },i*100);
+  }
+}
+</script>
+</body>
+</html>
