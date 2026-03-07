@@ -7,78 +7,118 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Baloo+2:wght@400;600;800&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --sun:#f5c518;--warm:#f4854e;--peach:#fde8d0;--soft:#fff9f0;
-  --green:#5a9e58;--brown:#7a4f2e;--text:#5a3010;--amber:#e07030;
-}
+:root{--sun:#f5c518;--warm:#f4854e;--soft:#fff9f0;--brown:#7a4f2e;--text:#5a3010;--amber:#e07030}
 body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;overflow-x:hidden}
 
+/* MUSIC BTN */
+#musicBtn{position:fixed;top:14px;right:14px;z-index:9999;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:2px solid #f5c842;border-radius:50%;width:48px;height:48px;font-size:1.4rem;cursor:pointer;box-shadow:0 4px 16px #f5c51840;transition:transform .2s;display:none;align-items:center;justify-content:center}
+#musicBtn:hover{transform:scale(1.15)}
+
+/* SPLASH */
+#splash{position:fixed;inset:0;z-index:99999;background:linear-gradient(160deg,#fff7d0,#ffe8a0,#ffd060);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity 1s ease,transform 1s ease}
+#splash.hide{opacity:0;transform:scale(1.08);pointer-events:none}
+.splash-sun{font-size:clamp(5rem,20vw,9rem);animation:spinSun 8s linear infinite}
+@keyframes spinSun{to{transform:rotate(360deg)}}
+.splash-title{font-family:'Dancing Script',cursive;font-size:clamp(2.8rem,11vw,5.5rem);color:#7a4f2e;text-align:center;line-height:1.2;text-shadow:2px 3px 0 #f5c51860}
+.splash-sub{font-size:clamp(1.1rem,4vw,1.6rem);color:#e07030;font-weight:700;text-align:center}
+.splash-flowers{font-size:clamp(2rem,7vw,3.5rem);letter-spacing:6px;animation:wave 2s ease-in-out infinite}
+@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.splash-bar-wrap{width:220px;height:10px;background:#fff8;border-radius:50px;overflow:hidden;margin-top:.5rem}
+.splash-bar{height:100%;background:linear-gradient(90deg,#f5c518,#e07030);border-radius:50px;width:0%;animation:loadBar 2.5s ease forwards}
+@keyframes loadBar{to{width:100%}}
+
+/* PETALS */
 .petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.pt{position:absolute;animation:fall linear infinite;opacity:0.7}
+.pt{position:absolute;animation:fall linear infinite;opacity:.7}
 @keyframes fall{0%{transform:translateY(-60px) rotate(0deg);opacity:.8}100%{transform:translateY(110vh) rotate(400deg);opacity:0}}
 
+/* PAGES */
 .page{display:none;min-height:100vh;position:relative;z-index:1;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.2rem;text-align:center}
 .page.active{display:flex}
 
+/* CONFETTI */
+.confetti-piece{position:fixed;pointer-events:none;z-index:9998;border-radius:3px;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
 /* PAGE 1 */
-#p1{background:linear-gradient(170deg,#fff7e0 0%,#ffe8b0 45%,#ffd280 100%)}
-.sun-icon{font-size:clamp(4rem,16vw,7rem);animation:spinSun 12s linear infinite;display:block;line-height:1;margin-bottom:.3rem}
-@keyframes spinSun{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+#p1{background:linear-gradient(170deg,#fff7e0,#ffe8b0,#ffd280)}
+.sun-icon{font-size:clamp(4rem,16vw,7rem);animation:spinSun 12s linear infinite;display:block;margin-bottom:.3rem}
 .flower-top{font-size:clamp(2.5rem,9vw,4.5rem);letter-spacing:4px;margin-bottom:.5rem}
 #p1 h1{font-family:'Dancing Script',cursive;font-size:clamp(3rem,12vw,5.5rem);color:var(--brown);line-height:1.2;text-shadow:2px 3px 0 #f5c51850;margin-bottom:.3rem}
 .tagline{font-size:clamp(1.2rem,4.5vw,1.8rem);color:var(--amber);font-weight:700;margin-bottom:1.8rem}
-.pw-card{background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border:2.5px solid #f5c842;border-radius:28px;padding:2rem 1.8rem 1.6rem;max-width:400px;width:100%;box-shadow:0 6px 32px #f5c84230}
+.pw-card{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border:2.5px solid #f5c842;border-radius:28px;padding:2rem 1.8rem 1.6rem;max-width:400px;width:100%;box-shadow:0 6px 32px #f5c84230}
 .pw-card label{font-size:clamp(1.1rem,4vw,1.4rem);color:var(--brown);font-weight:800;display:block;margin-bottom:.9rem}
-.pw-card input{width:100%;border:2.5px solid #f5c842;border-radius:50px;padding:.9rem 1.4rem;font-size:clamp(1.4rem,5vw,1.9rem);text-align:center;letter-spacing:8px;color:var(--brown);background:#fffdf5;outline:none;font-family:'Baloo 2',sans-serif;transition:border .3s}
-.pw-card input:focus{border-color:var(--amber)}
+.pw-card input{width:100%;border:2.5px solid #f5c842;border-radius:50px;padding:.9rem 1.4rem;font-size:clamp(1.4rem,5vw,1.9rem);text-align:center;letter-spacing:8px;color:var(--brown);background:#fffdf5;outline:none;font-family:'Baloo 2',sans-serif;transition:border .3s,box-shadow .3s}
+.pw-card input:focus{border-color:var(--amber);box-shadow:0 0 0 4px #f5c51820}
 .pw-btn{margin-top:1.1rem;width:100%;background:linear-gradient(135deg,#f5c518,#e07030);color:#fff;border:none;border-radius:50px;padding:1rem;font-size:clamp(1.2rem,4.5vw,1.5rem);font-family:'Dancing Script',cursive;font-weight:700;cursor:pointer;box-shadow:0 4px 18px #f5c51840;transition:transform .15s,box-shadow .15s}
 .pw-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px #f5c51860}
 .pw-err{color:#c0392b;font-size:1rem;font-weight:700;min-height:1.4rem;margin-top:.6rem}
 .flower-bot{font-size:clamp(1.8rem,6vw,3rem);letter-spacing:5px;margin-top:1.5rem}
 
-/* PAGE 2 */
-#p2{background:linear-gradient(160deg,#e8f5e2 0%,#d4f0c8 50%,#c5e8b0 100%)}
-#p2 h2{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,9vw,4rem);color:var(--brown);text-shadow:1px 2px 0 #6daf6b40;margin-bottom:.4rem}
-.hint-txt{font-size:clamp(1.1rem,4vw,1.5rem);color:#3a7a38;font-weight:700;margin-bottom:.5rem}
-.tap-count{font-family:'Dancing Script',cursive;font-size:clamp(1.6rem,6vw,2.4rem);color:var(--brown);margin-bottom:.8rem;min-height:2.5rem}
-.flower-stage{position:relative;display:flex;align-items:center;justify-content:center;width:clamp(260px,80vw,360px);height:clamp(260px,80vw,360px);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
-.flower-stage:active .big-flower-svg{transform:scale(.88)}
-.big-flower-svg{width:100%;height:100%;transition:transform .12s;filter:drop-shadow(0 12px 32px #6daf6b55);animation:floatUp 4s ease-in-out infinite}
-@keyframes floatUp{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-22px) rotate(2deg)}}
-.ripple-ring{position:absolute;border-radius:50%;background:transparent;border:3px solid #6daf6b;animation:ripple 1.5s ease-out infinite;opacity:0}
-.ripple-ring:nth-child(2){animation-delay:.5s;width:110%;height:110%}
-.ripple-ring:nth-child(3){animation-delay:1s;width:130%;height:130%}
-@keyframes ripple{0%{opacity:.6;transform:scale(.8)}100%{opacity:0;transform:scale(1.3)}}
-.burst-emoji{position:fixed;pointer-events:none;font-size:2.6rem;animation:burstOut .9s ease forwards;z-index:9999}
-@keyframes burstOut{0%{transform:scale(.3) translateY(0);opacity:1}100%{transform:scale(2) translateY(-90px);opacity:0}}
-.tap-msg{font-size:clamp(.95rem,3.5vw,1.2rem);color:#3a7a38;font-weight:600;margin-top:.6rem}
+/* PAGE 2 - WATER GAME */
+#p2{background:linear-gradient(160deg,#e8f5e2,#d4f0c8,#c5e8b0)}
+#p2 h2{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,9vw,4rem);color:var(--brown);margin-bottom:.3rem}
+.water-hint{font-size:clamp(1rem,3.8vw,1.4rem);color:#3a7a38;font-weight:700;margin-bottom:.4rem}
+.water-progress-wrap{width:clamp(200px,70vw,320px);background:#fff8;border-radius:50px;height:14px;overflow:hidden;border:2px solid #6daf6b;margin-bottom:.5rem}
+.water-progress{height:100%;background:linear-gradient(90deg,#56ab2f,#a8e063);border-radius:50px;width:0%;transition:width .4s ease}
+
+/* FLOWER BLOOM */
+.bloom-stage{position:relative;width:clamp(260px,78vw,340px);height:clamp(260px,78vw,340px);display:flex;align-items:center;justify-content:center}
+.bloom-svg{width:100%;height:100%;filter:drop-shadow(0 12px 32px #6daf6b55)}
+/* Each petal group animated */
+.petal-g{transform-origin:200px 200px;opacity:0;transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.petal-g.open{opacity:1}
+.center-g{opacity:0;transition:opacity .6s ease .2s,transform .6s cubic-bezier(.34,1.56,.64,1) .2s;transform:scale(0);transform-origin:200px 200px}
+.center-g.open{opacity:1;transform:scale(1)}
+/* stem always visible */
+.stem-g{opacity:1}
+/* Watering can */
+.water-can-wrap{cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;gap:.3rem;transition:transform .15s}
+.water-can-wrap:active{transform:scale(.9) rotate(-15deg)}
+.water-can-emoji{font-size:clamp(3.5rem,12vw,5rem);animation:wobble 3s ease-in-out infinite;filter:drop-shadow(0 4px 12px #56ab2f44)}
+@keyframes wobble{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.water-drop{position:fixed;pointer-events:none;font-size:1.4rem;animation:dropFall .8s ease forwards;z-index:9999}
+@keyframes dropFall{0%{transform:translateY(0);opacity:1}100%{transform:translateY(80px);opacity:0}}
+.water-label{font-size:clamp(1rem,3.5vw,1.2rem);color:#3a7a38;font-weight:700}
 
 /* PAGE 3 */
-#p3{background:linear-gradient(160deg,#1c1208,#3a2010,#1c1208);padding:2rem 1rem;gap:1.2rem}
+#p3{background:linear-gradient(160deg,#1c1208,#3a2010,#1c1208);padding:2rem 1rem;gap:1rem}
 #p3 h2{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3.5rem);color:#ffe8a0;text-shadow:0 0 20px #f5c51888}
-.photo-box{max-width:440px;width:100%;margin:0 auto;position:relative}
-.photo-slide{display:none;animation:zoomIn .7s cubic-bezier(.34,1.56,.64,1)}
-.photo-slide.show{display:block}
-@keyframes zoomIn{0%{transform:scale(.6) rotate(-6deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
-.photo-frame{border:6px solid #fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px #00000099;position:relative}
-.photo-frame img{width:100%;height:auto;display:block;max-height:56vh;object-fit:cover}
+.photo-box{max-width:440px;width:100%;margin:0 auto;position:relative;overflow:hidden}
+.slides-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.photo-slide-item{min-width:100%;padding:0 4px}
+/* FLOWER FRAME */
+.photo-frame{position:relative;border-radius:18px;overflow:visible}
+.photo-frame img{width:100%;height:auto;display:block;max-height:52vh;object-fit:cover;border-radius:14px;border:5px solid #fff;box-shadow:0 8px 30px #00000099}
+.frame-flower{position:absolute;font-size:1.6rem;animation:pulse 2s ease-in-out infinite;pointer-events:none}
+.ff-tl{top:-16px;left:-10px}.ff-tr{top:-16px;right:-10px;animation-delay:.5s}
+.ff-bl{bottom:-16px;left:-10px;animation-delay:1s}.ff-br{bottom:-16px;right:-10px;animation-delay:1.5s}
+.ff-tm{top:-18px;left:50%;transform:translateX(-50%);animation-delay:.25s}
+.ff-bm{bottom:-18px;left:50%;transform:translateX(-50%);animation-delay:.75s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
 .photo-num{color:#ffe8a0;font-size:clamp(1rem,3.5vw,1.3rem);font-family:'Dancing Script',cursive;text-align:center}
-/* Progress bar */
 .progress-wrap{width:100%;max-width:440px;background:#ffffff22;border-radius:50px;height:8px;overflow:hidden}
 .progress-bar{height:100%;background:linear-gradient(90deg,#f5c518,#e07030);border-radius:50px;width:0%;transition:width .2s linear}
+/* SAVE + SHARE */
+.photo-actions{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+.act-btn{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:50px;padding:.55rem 1.3rem;font-size:clamp(.9rem,3.2vw,1.1rem);font-family:'Baloo 2',sans-serif;font-weight:700;cursor:pointer;transition:background .2s,transform .15s}
+.act-btn:hover{background:rgba(255,255,255,.28);transform:translateY(-2px)}
+/* Swipe dots */
+.swipe-dots{display:flex;gap:6px;justify-content:center}
+.dot{width:8px;height:8px;border-radius:50%;background:#ffffff44;transition:background .3s,transform .3s}
+.dot.active{background:#f5c518;transform:scale(1.4)}
 
 /* PAGE 4 */
 #p4{background:linear-gradient(150deg,#fff9f0,#fef0d0,#fff9f0);padding:2.5rem 1rem;gap:1rem}
-.letter-title{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);color:var(--brown);text-shadow:1px 2px 0 #f5c51840}
+.letter-title{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);color:var(--brown)}
 .letter-outer{position:relative;max-width:500px;width:100%}
-.corner-deco{position:absolute;font-size:2rem;line-height:1;animation:pulse 2.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.corner-deco{position:absolute;font-size:2rem;animation:pulse 2.5s ease-in-out infinite}
 .c-tl{top:-14px;left:-14px}.c-tr{top:-14px;right:-14px;animation-delay:.6s}.c-bl{bottom:-14px;left:-14px;animation-delay:1.2s}.c-br{bottom:-14px;right:-14px;animation-delay:1.8s}
 .envelope{cursor:pointer;display:flex;flex-direction:column;align-items:center}
 .env-svg{width:clamp(220px,72vw,340px);filter:drop-shadow(0 10px 30px #f5c51850);transition:transform .3s}
 .env-svg:hover{transform:scale(1.04) translateY(-4px)}
 .env-hint{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,4.5vw,1.6rem);color:var(--amber);margin-top:.6rem;animation:pulse 1.6s ease-in-out infinite}
-.letter{display:none;background:linear-gradient(160deg,#fffdf5,#fff8e8);border:2.5px solid #f5c842;border-radius:22px;padding:2.5rem 2rem 2rem;position:relative;box-shadow:0 10px 40px #f5c51820,inset 0 0 50px #fff8e010;animation:unfold .9s cubic-bezier(.34,1.56,.64,1)}
+.letter{display:none;background:linear-gradient(160deg,#fffdf5,#fff8e8);border:2.5px solid #f5c842;border-radius:22px;padding:2.5rem 2rem 2rem;position:relative;box-shadow:0 10px 40px #f5c51820;animation:unfold .9s cubic-bezier(.34,1.56,.64,1)}
 @keyframes unfold{0%{transform:scaleY(0);opacity:0;transform-origin:top}100%{transform:scaleY(1);opacity:1}}
 .side-flowers{position:absolute;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;font-size:1.5rem}
 .sf-l{left:6px}.sf-r{right:6px}
@@ -90,12 +130,30 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 .letter-sign{font-family:'Dancing Script',cursive;font-size:clamp(1.5rem,5.5vw,2.2rem);color:var(--amber);text-align:right;margin-top:1.2rem}
 .sign-line{border:none;border-top:1.5px dashed #f5c842;margin:.6rem 0}
 .bottom-deco{text-align:center;font-size:1.4rem;letter-spacing:6px;margin-top:1rem}
+
+/* FIREWORKS */
+.fw-particle{position:fixed;pointer-events:none;border-radius:50%;animation:fwFly linear forwards;z-index:9997}
+@keyframes fwFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}}
+
 .floatup{position:fixed;pointer-events:none;animation:floatHeart 2.8s ease forwards;z-index:9999;font-size:2rem}
 @keyframes floatHeart{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-130px) scale(1.6);opacity:0}}
 </style>
 </head>
 <body>
 
+<!-- SPLASH -->
+<div id="splash">
+  <span class="splash-sun">🌻</span>
+  <div class="splash-title">Chúc Mừng<br>8 Tháng 3</div>
+  <div class="splash-sub">💛 Dành Riêng Cho Mẹ Yêu 💛</div>
+  <div class="splash-flowers">🌸🌼🌺🌷🌻</div>
+  <div class="splash-bar-wrap"><div class="splash-bar"></div></div>
+</div>
+
+<!-- MUSIC BTN -->
+<div id="musicBtn">🎵</div>
+
+<!-- PETALS -->
 <div class="petals" id="petalsBg"></div>
 
 <!-- PAGE 1 -->
@@ -113,87 +171,91 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
   <div class="flower-bot">🌼🌷🌸🌻🌸🌷🌼</div>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 - WATERING GAME -->
 <div class="page" id="p2">
-  <h2>🌸 Bông Hoa Dành Cho Mẹ 🌸</h2>
-  <div class="hint-txt">Chạm vào hoa 5 lần để mở điều bất ngờ! 🎁</div>
-  <div class="tap-count" id="tapCount">🌼 Chưa chạm lần nào 🌼</div>
-  <div class="flower-stage" id="flowerStage" onclick="tapFlower(event)">
-    <div class="ripple-ring" style="width:80%;height:80%"></div>
-    <div class="ripple-ring"></div>
-    <div class="ripple-ring"></div>
-    <svg class="big-flower-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <h2>🌱 Tưới Hoa Cho Mẹ Nào! 🌱</h2>
+  <div class="water-hint">Nhấn bình tưới để hoa nở — tưới đủ 5 lần nhé! 💧</div>
+  <div class="water-progress-wrap"><div class="water-progress" id="waterProg"></div></div>
+  <div id="bloomStage" style="pointer-events:none">
+    <svg class="bloom-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <radialGradient id="petal1" cx="50%" cy="85%" r="70%"><stop offset="0%" stop-color="#a8e063"/><stop offset="100%" stop-color="#56ab2f"/></radialGradient>
-        <radialGradient id="petal2" cx="50%" cy="85%" r="70%"><stop offset="0%" stop-color="#c3f0a0"/><stop offset="100%" stop-color="#78c850"/></radialGradient>
-        <radialGradient id="center1" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#fff176"/><stop offset="60%" stop-color="#ffcc02"/><stop offset="100%" stop-color="#f5a623"/></radialGradient>
-        <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <radialGradient id="pg1" cx="50%" cy="85%" r="70%"><stop offset="0%" stop-color="#a8e063"/><stop offset="100%" stop-color="#56ab2f"/></radialGradient>
+        <radialGradient id="pg2" cx="50%" cy="85%" r="70%"><stop offset="0%" stop-color="#c3f0a0"/><stop offset="100%" stop-color="#78c850"/></radialGradient>
+        <radialGradient id="cg" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#fff176"/><stop offset="60%" stop-color="#ffcc02"/><stop offset="100%" stop-color="#f5a623"/></radialGradient>
+        <filter id="glow2"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
-      <g transform="translate(200,200)">
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(0)" opacity=".95"/>
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(45)" opacity=".95"/>
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(90)" opacity=".95"/>
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(135)" opacity=".95"/>
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(180)" opacity=".95"/>
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(225)" opacity=".95"/>
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(270)" opacity=".95"/>
-        <ellipse cx="0" cy="-115" rx="34" ry="72" fill="url(#petal1)" transform="rotate(315)" opacity=".95"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(22.5)" opacity=".85"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(67.5)" opacity=".85"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(112.5)" opacity=".85"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(157.5)" opacity=".85"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(202.5)" opacity=".85"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(247.5)" opacity=".85"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(292.5)" opacity=".85"/>
-        <ellipse cx="0" cy="-88" rx="22" ry="52" fill="url(#petal2)" transform="rotate(337.5)" opacity=".85"/>
-        <circle cx="0" cy="0" r="58" fill="url(#center1)" filter="url(#glow)" stroke="#e8a000" stroke-width="3"/>
-        <circle cx="0" cy="0" r="40" fill="#fff176" opacity=".5"/>
-        <circle cx="0" cy="-30" r="5.5" fill="#c87800" opacity=".8"/>
-        <circle cx="21" cy="-21" r="5.5" fill="#c87800" opacity=".8"/>
-        <circle cx="30" cy="0" r="5.5" fill="#c87800" opacity=".8"/>
-        <circle cx="21" cy="21" r="5.5" fill="#c87800" opacity=".8"/>
-        <circle cx="0" cy="30" r="5.5" fill="#c87800" opacity=".8"/>
-        <circle cx="-21" cy="21" r="5.5" fill="#c87800" opacity=".8"/>
-        <circle cx="-30" cy="0" r="5.5" fill="#c87800" opacity=".8"/>
-        <circle cx="-21" cy="-21" r="5.5" fill="#c87800" opacity=".8"/>
-        <text x="0" y="12" text-anchor="middle" font-size="32" fill="#c87800" opacity=".9">💛</text>
+      <!-- Stem always visible -->
+      <g class="stem-g">
+        <line x1="200" y1="290" x2="200" y2="390" stroke="#4a9e40" stroke-width="12" stroke-linecap="round"/>
+        <ellipse cx="168" cy="355" rx="28" ry="12" fill="#5ab04a" transform="rotate(-25,168,355)"/>
+        <ellipse cx="232" cy="335" rx="28" ry="12" fill="#5ab04a" transform="rotate(25,232,335)"/>
       </g>
-      <line x1="200" y1="290" x2="200" y2="390" stroke="#4a9e40" stroke-width="12" stroke-linecap="round"/>
-      <ellipse cx="168" cy="350" rx="30" ry="13" fill="#5ab04a" transform="rotate(-25,168,350)"/>
-      <ellipse cx="232" cy="330" rx="30" ry="13" fill="#5ab04a" transform="rotate(25,232,330)"/>
+      <!-- Petal groups that bloom one by one -->
+      <g class="petal-g" id="pg_1" style="transform:rotate(0deg) scale(0.3)">
+        <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform-origin="200 200" opacity=".95"/>
+        <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform="rotate(180,200,200)" opacity=".95"/>
+      </g>
+      <g class="petal-g" id="pg_2" style="transform:rotate(45deg) scale(0.3)">
+        <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform-origin="200 200" opacity=".95"/>
+        <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform="rotate(180,200,200)" opacity=".95"/>
+      </g>
+      <g class="petal-g" id="pg_3" style="transform:rotate(90deg) scale(0.3)">
+        <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform-origin="200 200" opacity=".95"/>
+        <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform="rotate(180,200,200)" opacity=".95"/>
+      </g>
+      <g class="petal-g" id="pg_4" style="transform:rotate(22.5deg) scale(0.3)">
+        <ellipse cx="200" cy="95" rx="22" ry="52" fill="url(#pg2)" transform-origin="200 200" opacity=".85"/>
+        <ellipse cx="200" cy="95" rx="22" ry="52" fill="url(#pg2)" transform="rotate(180,200,200)" opacity=".85"/>
+        <ellipse cx="200" cy="95" rx="22" ry="52" fill="url(#pg2)" transform="rotate(90,200,200)" opacity=".85"/>
+        <ellipse cx="200" cy="95" rx="22" ry="52" fill="url(#pg2)" transform="rotate(270,200,200)" opacity=".85"/>
+      </g>
+      <!-- Center blooms last -->
+      <g class="center-g" id="pg_5">
+        <circle cx="200" cy="200" r="58" fill="url(#cg)" filter="url(#glow2)" stroke="#e8a000" stroke-width="3"/>
+        <circle cx="200" cy="200" r="40" fill="#fff176" opacity=".5"/>
+        <text x="200" y="213" text-anchor="middle" font-size="36" fill="#c87800" opacity=".9">💛</text>
+      </g>
     </svg>
   </div>
-  <div class="tap-msg">🌿 Mỗi lần chạm là một tình yêu của con gửi đến Mẹ 🌿</div>
+  <div class="water-can-wrap" id="waterCan" onclick="waterFlower(event)">
+    <span class="water-can-emoji">🪣</span>
+    <div class="water-label" id="waterLabel">Nhấn để tưới hoa! 💧</div>
+  </div>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 - PHOTOS -->
 <div class="page" id="p3">
   <h2>🌻 Khoảnh Khắc Của Mẹ 🌻</h2>
-  <div class="photo-box">
-    <div class="photo-slide show" id="s0"><div class="photo-frame"><img src="https://i.ibb.co/0ydLpfkJ/z7597691488842-77889869658876dc71a7d190705d3c4f.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s1"><div class="photo-frame"><img src="https://i.ibb.co/XrJZTH64/z7597691491409-e8164e22886f7b12d645d38f4d3f08fd.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s2"><div class="photo-frame"><img src="https://i.ibb.co/zV50DBPm/z7597691498230-0c946d17129bfec99f0dc5bbf81bbeb3.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s3"><div class="photo-frame"><img src="https://i.ibb.co/NnL0cwR9/z7597691502907-0fc43016f144614f8bb67fcd2d9f1358.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s4"><div class="photo-frame"><img src="https://i.ibb.co/TDKmtmXd/z7597691505869-ef1224843bc3bda18011030db03558d1.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s5"><div class="photo-frame"><img src="https://i.ibb.co/S45XXpvY/z7597691511627-c91c7630700fd1361076873adfeeb59c.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s6"><div class="photo-frame"><img src="https://i.ibb.co/76LJB2p/z7597691514221-1b133e986b6f86f3f17b04c6e5a28d35.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s7"><div class="photo-frame"><img src="https://i.ibb.co/5hTkzc3y/z7597691514428-d37cd5ede941e2b9ba7d4aa957f11a06.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s8"><div class="photo-frame"><img src="https://i.ibb.co/ZRkFkjzN/z7597691518282-aca53c3d00cb807ef1b91af6812ee9fe.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s9"><div class="photo-frame"><img src="https://i.ibb.co/8L21C0Fv/z7597691522313-a51fa2e1ffbc8ae4370a081c38fc62d9.jpg" loading="lazy"></div></div>
-    <div class="photo-slide" id="s10"><div class="photo-frame"><img src="https://i.ibb.co/k2nsP2DH/z7597691524970-ca229d06d6ba9142b7f7113ee682556f.jpg" loading="lazy"></div></div>
+  <div class="photo-box" id="photoBox">
+    <div class="slides-track" id="slidesTrack">
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/0ydLpfkJ/z7597691488842-77889869658876dc71a7d190705d3c4f.jpg" loading="lazy"><span class="frame-flower ff-tl">🌸</span><span class="frame-flower ff-tr">🌺</span><span class="frame-flower ff-bl">🌼</span><span class="frame-flower ff-br">🌻</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌹</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/XrJZTH64/z7597691491409-e8164e22886f7b12d645d38f4d3f08fd.jpg" loading="lazy"><span class="frame-flower ff-tl">🌼</span><span class="frame-flower ff-tr">🌸</span><span class="frame-flower ff-bl">🌺</span><span class="frame-flower ff-br">🌷</span><span class="frame-flower ff-tm">🌻</span><span class="frame-flower ff-bm">🌹</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/zV50DBPm/z7597691498230-0c946d17129bfec99f0dc5bbf81bbeb3.jpg" loading="lazy"><span class="frame-flower ff-tl">🌺</span><span class="frame-flower ff-tr">🌼</span><span class="frame-flower ff-bl">🌸</span><span class="frame-flower ff-br">🌹</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌻</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/NnL0cwR9/z7597691502907-0fc43016f144614f8bb67fcd2d9f1358.jpg" loading="lazy"><span class="frame-flower ff-tl">🌷</span><span class="frame-flower ff-tr">🌻</span><span class="frame-flower ff-bl">🌹</span><span class="frame-flower ff-br">🌸</span><span class="frame-flower ff-tm">🌺</span><span class="frame-flower ff-bm">🌼</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/TDKmtmXd/z7597691505869-ef1224843bc3bda18011030db03558d1.jpg" loading="lazy"><span class="frame-flower ff-tl">🌻</span><span class="frame-flower ff-tr">🌹</span><span class="frame-flower ff-bl">🌷</span><span class="frame-flower ff-br">🌼</span><span class="frame-flower ff-tm">🌸</span><span class="frame-flower ff-bm">🌺</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/S45XXpvY/z7597691511627-c91c7630700fd1361076873adfeeb59c.jpg" loading="lazy"><span class="frame-flower ff-tl">🌹</span><span class="frame-flower ff-tr">🌷</span><span class="frame-flower ff-bl">🌻</span><span class="frame-flower ff-br">🌺</span><span class="frame-flower ff-tm">🌼</span><span class="frame-flower ff-bm">🌸</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/76LJB2p/z7597691514221-1b133e986b6f86f3f17b04c6e5a28d35.jpg" loading="lazy"><span class="frame-flower ff-tl">🌸</span><span class="frame-flower ff-tr">🌺</span><span class="frame-flower ff-bl">🌼</span><span class="frame-flower ff-br">🌻</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌹</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/5hTkzc3y/z7597691514428-d37cd5ede941e2b9ba7d4aa957f11a06.jpg" loading="lazy"><span class="frame-flower ff-tl">🌺</span><span class="frame-flower ff-tr">🌼</span><span class="frame-flower ff-bl">🌸</span><span class="frame-flower ff-br">🌹</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌻</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/ZRkFkjzN/z7597691518282-aca53c3d00cb807ef1b91af6812ee9fe.jpg" loading="lazy"><span class="frame-flower ff-tl">🌷</span><span class="frame-flower ff-tr">🌻</span><span class="frame-flower ff-bl">🌹</span><span class="frame-flower ff-br">🌸</span><span class="frame-flower ff-tm">🌺</span><span class="frame-flower ff-bm">🌼</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/8L21C0Fv/z7597691522313-a51fa2e1ffbc8ae4370a081c38fc62d9.jpg" loading="lazy"><span class="frame-flower ff-tl">🌻</span><span class="frame-flower ff-tr">🌹</span><span class="frame-flower ff-bl">🌷</span><span class="frame-flower ff-br">🌼</span><span class="frame-flower ff-tm">🌸</span><span class="frame-flower ff-bm">🌺</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/k2nsP2DH/z7597691524970-ca229d06d6ba9142b7f7113ee682556f.jpg" loading="lazy"><span class="frame-flower ff-tl">🌼</span><span class="frame-flower ff-tr">🌸</span><span class="frame-flower ff-bl">🌺</span><span class="frame-flower ff-br">🌷</span><span class="frame-flower ff-tm">🌻</span><span class="frame-flower ff-bm">🌹</span></div></div>
+    </div>
   </div>
+  <div class="swipe-dots" id="swipeDots"></div>
   <div class="photo-num" id="pNum">🌼 Ảnh 1 / 11 🌼</div>
   <div class="progress-wrap"><div class="progress-bar" id="progBar"></div></div>
+  <div class="photo-actions">
+    <button class="act-btn" onclick="savePhoto()">💾 Lưu Ảnh</button>
+    <button class="act-btn" onclick="sharePage()">📤 Chia Sẻ</button>
+  </div>
 </div>
 
 <!-- PAGE 4 -->
 <div class="page" id="p4">
   <div class="letter-title">💌 Có Thư Gửi Mẹ Yêu 💌</div>
   <div class="letter-outer">
-    <span class="corner-deco c-tl">🌻</span>
-    <span class="corner-deco c-tr">🌸</span>
-    <span class="corner-deco c-bl">🌼</span>
-    <span class="corner-deco c-br">🌺</span>
+    <span class="corner-deco c-tl">🌻</span><span class="corner-deco c-tr">🌸</span>
+    <span class="corner-deco c-bl">🌼</span><span class="corner-deco c-br">🌺</span>
     <div class="envelope" id="envEl" onclick="openLetter()">
       <svg class="env-svg" viewBox="0 0 340 230" xmlns="http://www.w3.org/2000/svg">
         <defs><linearGradient id="envG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fffde0"/><stop offset="100%" stop-color="#ffe88a"/></linearGradient></defs>
@@ -206,9 +268,7 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
         <circle cx="170" cy="125" r="25" fill="#e8a000"/>
         <text x="170" y="120" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">8/3</text>
         <text x="170" y="135" text-anchor="middle" font-size="10" fill="#fff">💛MẸ💛</text>
-        <text x="35" y="58" font-size="20">🌸</text>
-        <text x="35" y="200" font-size="20">🌼</text>
-        <text x="286" y="200" font-size="20">🌺</text>
+        <text x="35" y="58" font-size="20">🌸</text><text x="35" y="200" font-size="20">🌼</text><text x="286" y="200" font-size="20">🌺</text>
       </svg>
       <div class="env-hint">✨ Nhấn để mở thư của Mẹ ✨</div>
     </div>
@@ -232,16 +292,97 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
       <div class="bottom-deco">🌸 🌼 🌻 🌼 🌸</div>
     </div>
   </div>
-  <div style="font-size:clamp(2rem,7vw,3rem);margin-top:1.5rem;animation:floatUp 3s ease-in-out infinite">🌻🌸🌼🌺🌷🌼🌸🌻</div>
+  <div style="font-size:clamp(2rem,7vw,3rem);margin-top:1.5rem;animation:wave 3s ease-in-out infinite">🌻🌸🌼🌺🌷🌼🌸🌻</div>
 </div>
 
 <script>
-// PETALS
+// ===== AUDIO =====
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let actx = null;
+let musicPlaying = false;
+let musicNodes = [];
+
+function initAudio(){
+  if(!actx) actx = new AudioCtx();
+}
+
+// Simple lullaby melody notes (freq, duration)
+const melody = [
+  [523,0.4],[659,0.4],[784,0.4],[880,0.8],
+  [784,0.4],[659,0.4],[523,0.8],
+  [659,0.4],[784,0.4],[880,0.4],[1047,0.8],
+  [880,0.4],[784,0.4],[659,0.8],
+  [523,0.4],[784,0.4],[659,0.8],
+  [523,0.4],[659,0.4],[784,0.8],
+  [523,0.4],[440,0.4],[523,0.8],
+];
+
+function playNote(freq, start, dur, gain=0.15){
+  const osc = actx.createOscillator();
+  const g = actx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  g.gain.setValueAtTime(0, actx.currentTime + start);
+  g.gain.linearRampToValueAtTime(gain, actx.currentTime + start + 0.05);
+  g.gain.linearRampToValueAtTime(0, actx.currentTime + start + dur - 0.05);
+  osc.connect(g); g.connect(actx.destination);
+  osc.start(actx.currentTime + start);
+  osc.stop(actx.currentTime + start + dur);
+  musicNodes.push(osc);
+}
+
+let musicLoop = null;
+function startMusic(){
+  initAudio();
+  if(actx.state === 'suspended') actx.resume();
+  let t = 0;
+  function playMelody(){
+    melody.forEach(([f,d])=>{ playNote(f, t, d); t += d; });
+    musicLoop = setTimeout(()=>{ t=0; playMelody(); }, t*1000 + 200);
+  }
+  playMelody();
+  musicPlaying = true;
+  document.getElementById('musicBtn').textContent = '🔊';
+}
+function stopMusic(){
+  clearTimeout(musicLoop);
+  musicNodes.forEach(n=>{try{n.stop();}catch(e){}});
+  musicNodes=[];
+  musicPlaying = false;
+  document.getElementById('musicBtn').textContent = '🔇';
+}
+
+document.getElementById('musicBtn').onclick = ()=>{
+  if(musicPlaying) stopMusic(); else startMusic();
+};
+
+// Bell sound on flower tap
+function playBell(){
+  initAudio();
+  if(actx.state === 'suspended') actx.resume();
+  [1047,1319,1568].forEach((f,i)=>{
+    const o=actx.createOscillator(); const g=actx.createGain();
+    o.type='sine'; o.frequency.value=f;
+    g.gain.setValueAtTime(0.18,actx.currentTime+i*0.08);
+    g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+i*0.08+0.6);
+    o.connect(g); g.connect(actx.destination);
+    o.start(actx.currentTime+i*0.08); o.stop(actx.currentTime+i*0.08+0.7);
+  });
+}
+
+// ===== SPLASH =====
+setTimeout(()=>{
+  document.getElementById('splash').classList.add('hide');
+  const mb = document.getElementById('musicBtn');
+  mb.style.display='flex';
+  setTimeout(()=>startMusic(), 200);
+},3000);
+
+// ===== PETALS =====
 const petals=['🌸','🌼','🌺','🌻','🌷','🍀','✿'];
 const bg=document.getElementById('petalsBg');
 for(let i=0;i<30;i++){
-  const d=document.createElement('div');
-  d.className='pt';
+  const d=document.createElement('div'); d.className='pt';
   d.textContent=petals[Math.floor(Math.random()*petals.length)];
   d.style.left=Math.random()*100+'%';
   d.style.fontSize=(1.1+Math.random()*1.6)+'rem';
@@ -250,12 +391,37 @@ for(let i=0;i<30;i++){
   bg.appendChild(d);
 }
 
-// PASSWORD
+// ===== CONFETTI =====
+function launchConfetti(){
+  const colors=['#f5c518','#e07030','#56ab2f','#e8517a','#fff176','#a8e063','#ff9ec4'];
+  for(let i=0;i<80;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div'); c.className='confetti-piece';
+      c.style.left=Math.random()*100+'vw';
+      c.style.top='-10px';
+      c.style.width=(8+Math.random()*8)+'px';
+      c.style.height=(8+Math.random()*8)+'px';
+      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDuration=(1.5+Math.random()*2)+'s';
+      c.style.animationDelay=(Math.random()*.5)+'s';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),4000);
+    },i*25);
+  }
+}
+
+// ===== PASSWORD =====
 function checkPw(){
   const v=document.getElementById('pwInput').value.trim();
   const err=document.getElementById('pwErr');
-  if(v==='0803'){err.textContent='';goPage('p2');}
-  else{err.textContent='❌ Mật khẩu chưa đúng rồi, thử lại nha Mẹ!';document.getElementById('pwInput').value='';}
+  if(v==='0803'){
+    err.textContent='';
+    launchConfetti();
+    setTimeout(()=>goPage('p2'),1200);
+  } else {
+    err.textContent='❌ Mật khẩu chưa đúng rồi, thử lại nha Mẹ!';
+    document.getElementById('pwInput').value='';
+  }
 }
 
 function goPage(id){
@@ -265,74 +431,151 @@ function goPage(id){
   if(id==='p3') startSlideshow();
 }
 
-// FLOWER TAP
-let taps=0;
-const msgs=['🌼 Chạm 1 lần rồi! 🌼','🌸 Chạm 2 lần! Con yêu Mẹ! 🌸','🌻 3 lần rồi! Sắp xong rồi! 🌻','🌺 4 lần! Còn 1 lần nữa thôi! 🌺','🎉 5 lần! Mở bí mật nào! 🎉'];
-const bEmojis=['🌻','🌸','🌼','🌺','⭐','🍀','✨','💛'];
-function tapFlower(e){
-  if(taps>=5)return;
-  taps++;
-  document.getElementById('tapCount').textContent=msgs[taps-1];
-  for(let i=0;i<4;i++){
-    const b=document.createElement('div');
-    b.className='burst-emoji';
-    b.textContent=bEmojis[Math.floor(Math.random()*bEmojis.length)];
-    const angle=Math.random()*360;const dist=50+Math.random()*60;
-    b.style.left=(e.clientX+Math.cos(angle)*dist-15)+'px';
-    b.style.top=(e.clientY+Math.sin(angle)*dist-15)+'px';
-    b.style.animationDelay=(i*0.08)+'s';
-    document.body.appendChild(b);setTimeout(()=>b.remove(),1000);
+// ===== WATERING GAME =====
+let waters = 0;
+const waterMsgs=['💧 Tưới 1 lần — hoa bắt đầu mọc!','💧💧 Tưới 2 lần — nụ hoa đang hình thành!','💧💧💧 Tưới 3 lần — cánh hoa mở ra rồi!','💧💧💧💧 Tưới 4 lần — gần nở rồi!','🌻 Tưới đủ 5 lần — Hoa nở rộ tặng Mẹ!'];
+const petalIds=['pg_1','pg_2','pg_3','pg_4','pg_5'];
+
+function waterFlower(e){
+  if(waters>=5) return;
+
+  // Water drops animation
+  for(let i=0;i<5;i++){
+    const d=document.createElement('div'); d.className='water-drop';
+    d.textContent='💧';
+    d.style.left=(e.clientX+Math.random()*30-15)+'px';
+    d.style.top=(e.clientY-10)+'px';
+    d.style.animationDelay=(i*0.07)+'s';
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),900);
   }
-  if(taps>=5){document.getElementById('flowerStage').style.pointerEvents='none';setTimeout(()=>goPage('p3'),900);}
+
+  playBell();
+  waters++;
+  document.getElementById('waterLabel').textContent = waterMsgs[waters-1];
+  document.getElementById('waterProg').style.width=(waters/5*100)+'%';
+
+  // Bloom petal
+  const el=document.getElementById(petalIds[waters-1]);
+  el.classList.add('open');
+  el.style.transform='rotate('+(waters*22)+'deg) scale(1)';
+
+  if(waters>=5){
+    document.getElementById('waterCan').style.pointerEvents='none';
+    document.getElementById('waterCan').style.opacity='0.4';
+    setTimeout(()=>goPage('p3'),1200);
+  }
 }
 
-// AUTO SLIDESHOW — mỗi 3.5 giây
-const TOTAL=11;
-const DELAY=3500;
-let cur=0;
-let slideTimer=null;
-let progTimer=null;
+// ===== PHOTO SLIDESHOW (Auto + Swipe) =====
+const TOTAL=11; const DELAY=3500;
+let cur=0; let slideTimer=null; let isDragging=false; let startX=0; let startY=0;
 
-function startSlideshow(){
-  cur=0;
-  showSlide(0);
-  scheduleNext();
+function buildDots(){
+  const wrap=document.getElementById('swipeDots');
+  wrap.innerHTML='';
+  for(let i=0;i<TOTAL;i++){
+    const d=document.createElement('div'); d.className='dot'+(i===0?' active':'');
+    wrap.appendChild(d);
+  }
 }
 
 function showSlide(idx){
-  document.querySelectorAll('.photo-slide').forEach(s=>s.classList.remove('show'));
-  document.getElementById('s'+idx).classList.add('show');
+  const track=document.getElementById('slidesTrack');
+  track.style.transform='translateX(-'+idx+'00%)';
   document.getElementById('pNum').textContent='🌼 Ảnh '+(idx+1)+' / '+TOTAL+' 🌼';
-  // reset progress bar
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
   const bar=document.getElementById('progBar');
-  bar.style.transition='none';
-  bar.style.width='0%';
-  setTimeout(()=>{bar.style.transition='width '+DELAY+'ms linear';bar.style.width='100%';},30);
+  bar.style.transition='none'; bar.style.width='0%';
+  setTimeout(()=>{bar.style.transition='width '+DELAY+'ms linear'; bar.style.width='100%';},30);
 }
 
-function scheduleNext(){
+function schedNext(){
   clearTimeout(slideTimer);
   slideTimer=setTimeout(()=>{
-    cur++;
-    if(cur>=TOTAL){goPage('p4');}
-    else{showSlide(cur);scheduleNext();}
+    cur++; if(cur>=TOTAL){goPage('p4');}
+    else{showSlide(cur); schedNext();}
   },DELAY);
 }
 
-// LETTER
+function startSlideshow(){
+  buildDots(); cur=0; showSlide(0); schedNext();
+}
+
+// Touch swipe
+const pb=document.getElementById('photoBox');
+pb.addEventListener('touchstart',e=>{startX=e.touches[0].clientX; startY=e.touches[0].clientY; isDragging=true;},{passive:true});
+pb.addEventListener('touchend',e=>{
+  if(!isDragging) return;
+  const dx=e.changedTouches[0].clientX-startX;
+  const dy=e.changedTouches[0].clientY-startY;
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){
+    clearTimeout(slideTimer);
+    if(dx<0&&cur<TOTAL-1){cur++; showSlide(cur); schedNext();}
+    else if(dx>0&&cur>0){cur--; showSlide(cur); schedNext();}
+  }
+  isDragging=false;
+});
+
+// Mouse swipe
+pb.addEventListener('mousedown',e=>{startX=e.clientX; isDragging=true;});
+pb.addEventListener('mouseup',e=>{
+  if(!isDragging) return;
+  const dx=e.clientX-startX;
+  if(Math.abs(dx)>40){
+    clearTimeout(slideTimer);
+    if(dx<0&&cur<TOTAL-1){cur++; showSlide(cur); schedNext();}
+    else if(dx>0&&cur>0){cur--; showSlide(cur); schedNext();}
+  }
+  isDragging=false;
+});
+
+// Save & Share
+function savePhoto(){
+  const imgs=document.querySelectorAll('.photo-slide-item img');
+  const url=imgs[cur]?.src;
+  if(!url){alert('Không tải được ảnh!');return;}
+  const a=document.createElement('a'); a.href=url; a.download='anh-me-'+(cur+1)+'.jpg';
+  a.target='_blank'; a.click();
+}
+function sharePage(){
+  const txt='💛 Trang chúc mừng 8/3 dành cho Mẹ yêu! 🌻🌸🌼';
+  if(navigator.share){navigator.share({title:'Chúc Mừng 8/3 Mẹ!',text:txt,url:location.href});}
+  else{navigator.clipboard.writeText(location.href+'\n'+txt).then(()=>alert('✅ Đã sao chép link! Gửi cho Mẹ nha! 💛'));}
+}
+
+// ===== FIREWORKS =====
+function launchFireworks(){
+  const colors=['#f5c518','#e07030','#56ab2f','#ff6b9d','#fff176','#a8e063','#ff9ec4','#88d8ff'];
+  for(let b=0;b<6;b++){
+    setTimeout(()=>{
+      const cx=20+Math.random()*60+'vw';
+      const cy=20+Math.random()*40+'vh';
+      for(let i=0;i<22;i++){
+        const p=document.createElement('div'); p.className='fw-particle';
+        const angle=Math.random()*360; const dist=80+Math.random()*120;
+        const tx=Math.cos(angle*Math.PI/180)*dist+'px';
+        const ty=Math.sin(angle*Math.PI/180)*dist+'px';
+        p.style.cssText=`left:${cx};top:${cy};width:8px;height:8px;background:${colors[Math.floor(Math.random()*colors.length)]};--tx:${tx};--ty:${ty};animation-duration:${0.8+Math.random()*.6}s;animation-delay:${Math.random()*.2}s`;
+        document.body.appendChild(p);
+        setTimeout(()=>p.remove(),1600);
+      }
+    },b*300);
+  }
+}
+
+// ===== LETTER =====
 function openLetter(){
   document.getElementById('envEl').style.display='none';
   document.getElementById('letEl').style.display='block';
-  for(let i=0;i<15;i++){
+  launchFireworks();
+  for(let i=0;i<18;i++){
     setTimeout(()=>{
-      const f=document.createElement('div');
-      f.className='floatup';
-      f.textContent=['🌻','🌸','🌼','🌺','🌷','💛'][Math.floor(Math.random()*6)];
-      f.style.left=Math.random()*85+'%';
-      f.style.bottom='30%';
+      const f=document.createElement('div'); f.className='floatup';
+      f.textContent=['🌻','🌸','🌼','🌺','🌷','💛','⭐'][Math.floor(Math.random()*7)];
+      f.style.left=Math.random()*85+'%'; f.style.bottom='30%';
       f.style.fontSize=(1.4+Math.random()*1.4)+'rem';
-      document.body.appendChild(f);
-      setTimeout(()=>f.remove(),3000);
+      document.body.appendChild(f); setTimeout(()=>f.remove(),3000);
     },i*100);
   }
 }
