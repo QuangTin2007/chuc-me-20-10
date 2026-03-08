@@ -10,11 +10,9 @@
 :root{--sun:#f5c518;--warm:#f4854e;--soft:#fff9f0;--brown:#7a4f2e;--text:#5a3010;--amber:#e07030}
 body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;overflow-x:hidden}
 
-/* MUSIC BTN */
 #musicBtn{position:fixed;top:14px;right:14px;z-index:9999;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:2px solid #f5c842;border-radius:50%;width:48px;height:48px;font-size:1.4rem;cursor:pointer;box-shadow:0 4px 16px #f5c51840;transition:transform .2s;display:none;align-items:center;justify-content:center}
 #musicBtn:hover{transform:scale(1.15)}
 
-/* SPLASH */
 #splash{position:fixed;inset:0;z-index:99999;background:linear-gradient(160deg,#fff7d0,#ffe8a0,#ffd060);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity 1s ease,transform 1s ease}
 #splash.hide{opacity:0;transform:scale(1.08);pointer-events:none}
 .splash-sun{font-size:clamp(5rem,20vw,9rem);animation:spinSun 8s linear infinite}
@@ -27,20 +25,16 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 .splash-bar{height:100%;background:linear-gradient(90deg,#f5c518,#e07030);border-radius:50px;width:0%;animation:loadBar 2.5s ease forwards}
 @keyframes loadBar{to{width:100%}}
 
-/* PETALS */
 .petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .pt{position:absolute;animation:fall linear infinite;opacity:.7}
 @keyframes fall{0%{transform:translateY(-60px) rotate(0deg);opacity:.8}100%{transform:translateY(110vh) rotate(400deg);opacity:0}}
 
-/* PAGES */
 .page{display:none;min-height:100vh;position:relative;z-index:1;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.2rem;text-align:center}
 .page.active{display:flex}
 
-/* CONFETTI */
 .confetti-piece{position:fixed;pointer-events:none;z-index:9998;border-radius:3px;animation:confettiFall linear forwards}
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 
-/* PAGE 1 */
 #p1{background:linear-gradient(170deg,#fff7e0,#ffe8b0,#ffd280)}
 .sun-icon{font-size:clamp(4rem,16vw,7rem);animation:spinSun 12s linear infinite;display:block;margin-bottom:.3rem}
 .flower-top{font-size:clamp(2.5rem,9vw,4.5rem);letter-spacing:4px;margin-bottom:.5rem}
@@ -55,24 +49,19 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 .pw-err{color:#c0392b;font-size:1rem;font-weight:700;min-height:1.4rem;margin-top:.6rem}
 .flower-bot{font-size:clamp(1.8rem,6vw,3rem);letter-spacing:5px;margin-top:1.5rem}
 
-/* PAGE 2 - WATER GAME */
 #p2{background:linear-gradient(160deg,#e8f5e2,#d4f0c8,#c5e8b0)}
 #p2 h2{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,9vw,4rem);color:var(--brown);margin-bottom:.3rem}
 .water-hint{font-size:clamp(1rem,3.8vw,1.4rem);color:#3a7a38;font-weight:700;margin-bottom:.4rem}
 .water-progress-wrap{width:clamp(200px,70vw,320px);background:#fff8;border-radius:50px;height:14px;overflow:hidden;border:2px solid #6daf6b;margin-bottom:.5rem}
 .water-progress{height:100%;background:linear-gradient(90deg,#56ab2f,#a8e063);border-radius:50px;width:0%;transition:width .4s ease}
 
-/* FLOWER BLOOM */
 .bloom-stage{position:relative;width:clamp(260px,78vw,340px);height:clamp(260px,78vw,340px);display:flex;align-items:center;justify-content:center}
 .bloom-svg{width:100%;height:100%;filter:drop-shadow(0 12px 32px #6daf6b55)}
-/* Each petal group animated */
 .petal-g{transform-origin:200px 200px;opacity:0;transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
 .petal-g.open{opacity:1}
 .center-g{opacity:0;transition:opacity .6s ease .2s,transform .6s cubic-bezier(.34,1.56,.64,1) .2s;transform:scale(0);transform-origin:200px 200px}
 .center-g.open{opacity:1;transform:scale(1)}
-/* stem always visible */
 .stem-g{opacity:1}
-/* Watering can */
 .water-can-wrap{cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;gap:.3rem;transition:transform .15s}
 .water-can-wrap:active{transform:scale(.9) rotate(-15deg)}
 .water-can-emoji{font-size:clamp(3.5rem,12vw,5rem);animation:wobble 3s ease-in-out infinite;filter:drop-shadow(0 4px 12px #56ab2f44)}
@@ -81,13 +70,11 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 @keyframes dropFall{0%{transform:translateY(0);opacity:1}100%{transform:translateY(80px);opacity:0}}
 .water-label{font-size:clamp(1rem,3.5vw,1.2rem);color:#3a7a38;font-weight:700}
 
-/* PAGE 3 */
 #p3{background:linear-gradient(160deg,#1c1208,#3a2010,#1c1208);padding:2rem 1rem;gap:1rem}
 #p3 h2{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3.5rem);color:#ffe8a0;text-shadow:0 0 20px #f5c51888}
 .photo-box{max-width:440px;width:100%;margin:0 auto;position:relative;overflow:hidden}
 .slides-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .photo-slide-item{min-width:100%;padding:0 4px}
-/* FLOWER FRAME */
 .photo-frame{position:relative;border-radius:18px;overflow:visible}
 .photo-frame img{width:100%;height:auto;display:block;max-height:52vh;object-fit:cover;border-radius:14px;border:5px solid #fff;box-shadow:0 8px 30px #00000099}
 .frame-flower{position:absolute;font-size:1.6rem;animation:pulse 2s ease-in-out infinite;pointer-events:none}
@@ -99,16 +86,13 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 .photo-num{color:#ffe8a0;font-size:clamp(1rem,3.5vw,1.3rem);font-family:'Dancing Script',cursive;text-align:center}
 .progress-wrap{width:100%;max-width:440px;background:#ffffff22;border-radius:50px;height:8px;overflow:hidden}
 .progress-bar{height:100%;background:linear-gradient(90deg,#f5c518,#e07030);border-radius:50px;width:0%;transition:width .2s linear}
-/* SAVE + SHARE */
 .photo-actions{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
 .act-btn{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:50px;padding:.55rem 1.3rem;font-size:clamp(.9rem,3.2vw,1.1rem);font-family:'Baloo 2',sans-serif;font-weight:700;cursor:pointer;transition:background .2s,transform .15s}
 .act-btn:hover{background:rgba(255,255,255,.28);transform:translateY(-2px)}
-/* Swipe dots */
 .swipe-dots{display:flex;gap:6px;justify-content:center}
 .dot{width:8px;height:8px;border-radius:50%;background:#ffffff44;transition:background .3s,transform .3s}
 .dot.active{background:#f5c518;transform:scale(1.4)}
 
-/* PAGE 4 */
 #p4{background:linear-gradient(150deg,#fff9f0,#fef0d0,#fff9f0);padding:2.5rem 1rem;gap:1rem}
 .letter-title{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);color:var(--brown)}
 .letter-outer{position:relative;max-width:500px;width:100%}
@@ -131,7 +115,6 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 .sign-line{border:none;border-top:1.5px dashed #f5c842;margin:.6rem 0}
 .bottom-deco{text-align:center;font-size:1.4rem;letter-spacing:6px;margin-top:1rem}
 
-/* FIREWORKS */
 .fw-particle{position:fixed;pointer-events:none;border-radius:50%;animation:fwFly linear forwards;z-index:9997}
 @keyframes fwFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}}
 
@@ -141,7 +124,6 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 </head>
 <body>
 
-<!-- SPLASH -->
 <div id="splash">
   <span class="splash-sun">🌻</span>
   <div class="splash-title">Chúc Mừng<br>8 Tháng 3</div>
@@ -150,10 +132,7 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
   <div class="splash-bar-wrap"><div class="splash-bar"></div></div>
 </div>
 
-<!-- MUSIC BTN -->
 <div id="musicBtn">🎵</div>
-
-<!-- PETALS -->
 <div class="petals" id="petalsBg"></div>
 
 <!-- PAGE 1 -->
@@ -171,7 +150,7 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
   <div class="flower-bot">🌼🌷🌸🌻🌸🌷🌼</div>
 </div>
 
-<!-- PAGE 2 - WATERING GAME -->
+<!-- PAGE 2 -->
 <div class="page" id="p2">
   <h2>🌱 Tưới Hoa Cho Mẹ Nào! 🌱</h2>
   <div class="water-hint">Nhấn bình tưới để hoa nở — tưới đủ 5 lần nhé! 💧</div>
@@ -184,13 +163,11 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
         <radialGradient id="cg" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#fff176"/><stop offset="60%" stop-color="#ffcc02"/><stop offset="100%" stop-color="#f5a623"/></radialGradient>
         <filter id="glow2"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
-      <!-- Stem always visible -->
       <g class="stem-g">
         <line x1="200" y1="290" x2="200" y2="390" stroke="#4a9e40" stroke-width="12" stroke-linecap="round"/>
         <ellipse cx="168" cy="355" rx="28" ry="12" fill="#5ab04a" transform="rotate(-25,168,355)"/>
         <ellipse cx="232" cy="335" rx="28" ry="12" fill="#5ab04a" transform="rotate(25,232,335)"/>
       </g>
-      <!-- Petal groups that bloom one by one -->
       <g class="petal-g" id="pg_1" style="transform:rotate(0deg) scale(0.3)">
         <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform-origin="200 200" opacity=".95"/>
         <ellipse cx="200" cy="85" rx="34" ry="72" fill="url(#pg1)" transform="rotate(180,200,200)" opacity=".95"/>
@@ -209,7 +186,6 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
         <ellipse cx="200" cy="95" rx="22" ry="52" fill="url(#pg2)" transform="rotate(90,200,200)" opacity=".85"/>
         <ellipse cx="200" cy="95" rx="22" ry="52" fill="url(#pg2)" transform="rotate(270,200,200)" opacity=".85"/>
       </g>
-      <!-- Center blooms last -->
       <g class="center-g" id="pg_5">
         <circle cx="200" cy="200" r="58" fill="url(#cg)" filter="url(#glow2)" stroke="#e8a000" stroke-width="3"/>
         <circle cx="200" cy="200" r="40" fill="#fff176" opacity=".5"/>
@@ -223,11 +199,12 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
   </div>
 </div>
 
-<!-- PAGE 3 - PHOTOS -->
+<!-- PAGE 3 - 22 ẢNH (11 cũ + 11 mới) -->
 <div class="page" id="p3">
   <h2>🌻 Khoảnh Khắc Của Mẹ 🌻</h2>
   <div class="photo-box" id="photoBox">
     <div class="slides-track" id="slidesTrack">
+      <!-- 11 ảnh CŨ -->
       <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/0ydLpfkJ/z7597691488842-77889869658876dc71a7d190705d3c4f.jpg" loading="lazy"><span class="frame-flower ff-tl">🌸</span><span class="frame-flower ff-tr">🌺</span><span class="frame-flower ff-bl">🌼</span><span class="frame-flower ff-br">🌻</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌹</span></div></div>
       <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/XrJZTH64/z7597691491409-e8164e22886f7b12d645d38f4d3f08fd.jpg" loading="lazy"><span class="frame-flower ff-tl">🌼</span><span class="frame-flower ff-tr">🌸</span><span class="frame-flower ff-bl">🌺</span><span class="frame-flower ff-br">🌷</span><span class="frame-flower ff-tm">🌻</span><span class="frame-flower ff-bm">🌹</span></div></div>
       <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/zV50DBPm/z7597691498230-0c946d17129bfec99f0dc5bbf81bbeb3.jpg" loading="lazy"><span class="frame-flower ff-tl">🌺</span><span class="frame-flower ff-tr">🌼</span><span class="frame-flower ff-bl">🌸</span><span class="frame-flower ff-br">🌹</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌻</span></div></div>
@@ -239,10 +216,22 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
       <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/ZRkFkjzN/z7597691518282-aca53c3d00cb807ef1b91af6812ee9fe.jpg" loading="lazy"><span class="frame-flower ff-tl">🌷</span><span class="frame-flower ff-tr">🌻</span><span class="frame-flower ff-bl">🌹</span><span class="frame-flower ff-br">🌸</span><span class="frame-flower ff-tm">🌺</span><span class="frame-flower ff-bm">🌼</span></div></div>
       <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/8L21C0Fv/z7597691522313-a51fa2e1ffbc8ae4370a081c38fc62d9.jpg" loading="lazy"><span class="frame-flower ff-tl">🌻</span><span class="frame-flower ff-tr">🌹</span><span class="frame-flower ff-bl">🌷</span><span class="frame-flower ff-br">🌼</span><span class="frame-flower ff-tm">🌸</span><span class="frame-flower ff-bm">🌺</span></div></div>
       <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/k2nsP2DH/z7597691524970-ca229d06d6ba9142b7f7113ee682556f.jpg" loading="lazy"><span class="frame-flower ff-tl">🌼</span><span class="frame-flower ff-tr">🌸</span><span class="frame-flower ff-bl">🌺</span><span class="frame-flower ff-br">🌷</span><span class="frame-flower ff-tm">🌻</span><span class="frame-flower ff-bm">🌹</span></div></div>
+      <!-- 11 ảnh MỚI -->
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/ns3w9ym9/z7599075513759-03b64524c45b8b8ff1aa0040fd7b3766.jpg" loading="lazy"><span class="frame-flower ff-tl">🌸</span><span class="frame-flower ff-tr">🌺</span><span class="frame-flower ff-bl">🌼</span><span class="frame-flower ff-br">🌻</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌹</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/5qs1Y4h/z7599075528753-47d9e3274a9bfb2f06fe0c9932e4b7f6.jpg" loading="lazy"><span class="frame-flower ff-tl">🌼</span><span class="frame-flower ff-tr">🌸</span><span class="frame-flower ff-bl">🌺</span><span class="frame-flower ff-br">🌷</span><span class="frame-flower ff-tm">🌻</span><span class="frame-flower ff-bm">🌹</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/ycpmrFLk/z7599075535638-9d9d286fe81754822e8c822cba5a0ecd.jpg" loading="lazy"><span class="frame-flower ff-tl">🌺</span><span class="frame-flower ff-tr">🌼</span><span class="frame-flower ff-bl">🌸</span><span class="frame-flower ff-br">🌹</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌻</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/4gKhCsmg/z7599075538610-590f5e019dc69606e994028615b7533a.jpg" loading="lazy"><span class="frame-flower ff-tl">🌷</span><span class="frame-flower ff-tr">🌻</span><span class="frame-flower ff-bl">🌹</span><span class="frame-flower ff-br">🌸</span><span class="frame-flower ff-tm">🌺</span><span class="frame-flower ff-bm">🌼</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/GvLJnytG/z7599077790120-19471ca05fab6a6c8c30ca79fe2fa982.jpg" loading="lazy"><span class="frame-flower ff-tl">🌻</span><span class="frame-flower ff-tr">🌹</span><span class="frame-flower ff-bl">🌷</span><span class="frame-flower ff-br">🌼</span><span class="frame-flower ff-tm">🌸</span><span class="frame-flower ff-bm">🌺</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/8Lb92ySG/z7599077790899-af3bb2193ad8b6ceb7aba150bc4096d5.jpg" loading="lazy"><span class="frame-flower ff-tl">🌹</span><span class="frame-flower ff-tr">🌷</span><span class="frame-flower ff-bl">🌻</span><span class="frame-flower ff-br">🌺</span><span class="frame-flower ff-tm">🌼</span><span class="frame-flower ff-bm">🌸</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/zWCz377H/z7599077791342-492a38c86f8a8a51e1ccd5b74d3877d4.jpg" loading="lazy"><span class="frame-flower ff-tl">🌸</span><span class="frame-flower ff-tr">🌺</span><span class="frame-flower ff-bl">🌼</span><span class="frame-flower ff-br">🌻</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌹</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/k6vrB706/z7599077812830-21135afc3526476eb4b1bf0267292e4a.jpg" loading="lazy"><span class="frame-flower ff-tl">🌺</span><span class="frame-flower ff-tr">🌼</span><span class="frame-flower ff-bl">🌸</span><span class="frame-flower ff-br">🌹</span><span class="frame-flower ff-tm">🌷</span><span class="frame-flower ff-bm">🌻</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/5hGMvs4k/z7599077812978-abf86e9d0550d2d6648328ecee19b897.jpg" loading="lazy"><span class="frame-flower ff-tl">🌷</span><span class="frame-flower ff-tr">🌻</span><span class="frame-flower ff-bl">🌹</span><span class="frame-flower ff-br">🌸</span><span class="frame-flower ff-tm">🌺</span><span class="frame-flower ff-bm">🌼</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/MygkXkCb/z7599077820560-54316fd2cb148f46fefd3726d2cc5875.jpg" loading="lazy"><span class="frame-flower ff-tl">🌻</span><span class="frame-flower ff-tr">🌹</span><span class="frame-flower ff-bl">🌷</span><span class="frame-flower ff-br">🌼</span><span class="frame-flower ff-tm">🌸</span><span class="frame-flower ff-bm">🌺</span></div></div>
+      <div class="photo-slide-item"><div class="photo-frame"><img src="https://i.ibb.co/tP2WVDvZ/z7599078838529-84b5f4505532505f653250fe585eaf38.jpg" loading="lazy"><span class="frame-flower ff-tl">🌼</span><span class="frame-flower ff-tr">🌸</span><span class="frame-flower ff-bl">🌺</span><span class="frame-flower ff-br">🌷</span><span class="frame-flower ff-tm">🌻</span><span class="frame-flower ff-bm">🌹</span></div></div>
     </div>
   </div>
   <div class="swipe-dots" id="swipeDots"></div>
-  <div class="photo-num" id="pNum">🌼 Ảnh 1 / 11 🌼</div>
+  <div class="photo-num" id="pNum">🌼 Ảnh 1 / 22 🌼</div>
   <div class="progress-wrap"><div class="progress-bar" id="progBar"></div></div>
   <div class="photo-actions">
     <button class="act-btn" onclick="savePhoto()">💾 Lưu Ảnh</button>
@@ -296,17 +285,11 @@ body{font-family:'Baloo 2',sans-serif;background:var(--soft);min-height:100vh;ov
 </div>
 
 <script>
-// ===== AUDIO =====
 const AudioCtx = window.AudioContext || window.webkitAudioContext;
-let actx = null;
-let musicPlaying = false;
-let musicNodes = [];
+let actx = null, musicPlaying = false, musicNodes = [], musicLoop = null;
 
-function initAudio(){
-  if(!actx) actx = new AudioCtx();
-}
+function initAudio(){ if(!actx) actx = new AudioCtx(); }
 
-// Simple lullaby melody notes (freq, duration)
 const melody = [
   [523,0.4],[659,0.4],[784,0.4],[880,0.8],
   [784,0.4],[659,0.4],[523,0.8],
@@ -318,67 +301,54 @@ const melody = [
 ];
 
 function playNote(freq, start, dur, gain=0.15){
-  const osc = actx.createOscillator();
-  const g = actx.createGain();
-  osc.type = 'sine';
-  osc.frequency.value = freq;
-  g.gain.setValueAtTime(0, actx.currentTime + start);
-  g.gain.linearRampToValueAtTime(gain, actx.currentTime + start + 0.05);
-  g.gain.linearRampToValueAtTime(0, actx.currentTime + start + dur - 0.05);
+  const osc = actx.createOscillator(), g = actx.createGain();
+  osc.type='sine'; osc.frequency.value=freq;
+  g.gain.setValueAtTime(0, actx.currentTime+start);
+  g.gain.linearRampToValueAtTime(gain, actx.currentTime+start+0.05);
+  g.gain.linearRampToValueAtTime(0, actx.currentTime+start+dur-0.05);
   osc.connect(g); g.connect(actx.destination);
-  osc.start(actx.currentTime + start);
-  osc.stop(actx.currentTime + start + dur);
+  osc.start(actx.currentTime+start); osc.stop(actx.currentTime+start+dur);
   musicNodes.push(osc);
 }
 
-let musicLoop = null;
 function startMusic(){
   initAudio();
-  if(actx.state === 'suspended') actx.resume();
-  let t = 0;
+  if(actx.state==='suspended') actx.resume();
+  let t=0;
   function playMelody(){
-    melody.forEach(([f,d])=>{ playNote(f, t, d); t += d; });
-    musicLoop = setTimeout(()=>{ t=0; playMelody(); }, t*1000 + 200);
+    melody.forEach(([f,d])=>{ playNote(f,t,d); t+=d; });
+    musicLoop=setTimeout(()=>{ t=0; playMelody(); }, t*1000+200);
   }
-  playMelody();
-  musicPlaying = true;
-  document.getElementById('musicBtn').textContent = '🔊';
+  playMelody(); musicPlaying=true;
+  document.getElementById('musicBtn').textContent='🔊';
 }
 function stopMusic(){
   clearTimeout(musicLoop);
   musicNodes.forEach(n=>{try{n.stop();}catch(e){}});
-  musicNodes=[];
-  musicPlaying = false;
-  document.getElementById('musicBtn').textContent = '🔇';
+  musicNodes=[]; musicPlaying=false;
+  document.getElementById('musicBtn').textContent='🔇';
 }
+document.getElementById('musicBtn').onclick=()=>{ if(musicPlaying) stopMusic(); else startMusic(); };
 
-document.getElementById('musicBtn').onclick = ()=>{
-  if(musicPlaying) stopMusic(); else startMusic();
-};
-
-// Bell sound on flower tap
 function playBell(){
   initAudio();
-  if(actx.state === 'suspended') actx.resume();
+  if(actx.state==='suspended') actx.resume();
   [1047,1319,1568].forEach((f,i)=>{
-    const o=actx.createOscillator(); const g=actx.createGain();
+    const o=actx.createOscillator(), g=actx.createGain();
     o.type='sine'; o.frequency.value=f;
-    g.gain.setValueAtTime(0.18,actx.currentTime+i*0.08);
-    g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+i*0.08+0.6);
+    g.gain.setValueAtTime(0.18, actx.currentTime+i*0.08);
+    g.gain.exponentialRampToValueAtTime(0.001, actx.currentTime+i*0.08+0.6);
     o.connect(g); g.connect(actx.destination);
     o.start(actx.currentTime+i*0.08); o.stop(actx.currentTime+i*0.08+0.7);
   });
 }
 
-// ===== SPLASH =====
 setTimeout(()=>{
   document.getElementById('splash').classList.add('hide');
-  const mb = document.getElementById('musicBtn');
-  mb.style.display='flex';
+  const mb=document.getElementById('musicBtn'); mb.style.display='flex';
   setTimeout(()=>startMusic(), 200);
-},3000);
+}, 3000);
 
-// ===== PETALS =====
 const petals=['🌸','🌼','🌺','🌻','🌷','🍀','✿'];
 const bg=document.getElementById('petalsBg');
 for(let i=0;i<30;i++){
@@ -391,26 +361,21 @@ for(let i=0;i<30;i++){
   bg.appendChild(d);
 }
 
-// ===== CONFETTI =====
 function launchConfetti(){
   const colors=['#f5c518','#e07030','#56ab2f','#e8517a','#fff176','#a8e063','#ff9ec4'];
   for(let i=0;i<80;i++){
     setTimeout(()=>{
       const c=document.createElement('div'); c.className='confetti-piece';
-      c.style.left=Math.random()*100+'vw';
-      c.style.top='-10px';
-      c.style.width=(8+Math.random()*8)+'px';
-      c.style.height=(8+Math.random()*8)+'px';
+      c.style.left=Math.random()*100+'vw'; c.style.top='-10px';
+      c.style.width=(8+Math.random()*8)+'px'; c.style.height=(8+Math.random()*8)+'px';
       c.style.background=colors[Math.floor(Math.random()*colors.length)];
       c.style.animationDuration=(1.5+Math.random()*2)+'s';
       c.style.animationDelay=(Math.random()*.5)+'s';
-      document.body.appendChild(c);
-      setTimeout(()=>c.remove(),4000);
+      document.body.appendChild(c); setTimeout(()=>c.remove(),4000);
     },i*25);
   }
 }
 
-// ===== PASSWORD =====
 function checkPw(){
   const v=document.getElementById('pwInput').value.trim();
   const err=document.getElementById('pwErr');
@@ -431,35 +396,23 @@ function goPage(id){
   if(id==='p3') startSlideshow();
 }
 
-// ===== WATERING GAME =====
-let waters = 0;
+let waters=0;
 const waterMsgs=['💧 Tưới 1 lần — hoa bắt đầu mọc!','💧💧 Tưới 2 lần — nụ hoa đang hình thành!','💧💧💧 Tưới 3 lần — cánh hoa mở ra rồi!','💧💧💧💧 Tưới 4 lần — gần nở rồi!','🌻 Tưới đủ 5 lần — Hoa nở rộ tặng Mẹ!'];
 const petalIds=['pg_1','pg_2','pg_3','pg_4','pg_5'];
 
 function waterFlower(e){
   if(waters>=5) return;
-
-  // Water drops animation
   for(let i=0;i<5;i++){
     const d=document.createElement('div'); d.className='water-drop';
-    d.textContent='💧';
-    d.style.left=(e.clientX+Math.random()*30-15)+'px';
-    d.style.top=(e.clientY-10)+'px';
-    d.style.animationDelay=(i*0.07)+'s';
-    document.body.appendChild(d);
-    setTimeout(()=>d.remove(),900);
+    d.textContent='💧'; d.style.left=(e.clientX+Math.random()*30-15)+'px';
+    d.style.top=(e.clientY-10)+'px'; d.style.animationDelay=(i*0.07)+'s';
+    document.body.appendChild(d); setTimeout(()=>d.remove(),900);
   }
-
-  playBell();
-  waters++;
-  document.getElementById('waterLabel').textContent = waterMsgs[waters-1];
+  playBell(); waters++;
+  document.getElementById('waterLabel').textContent=waterMsgs[waters-1];
   document.getElementById('waterProg').style.width=(waters/5*100)+'%';
-
-  // Bloom petal
   const el=document.getElementById(petalIds[waters-1]);
-  el.classList.add('open');
-  el.style.transform='rotate('+(waters*22)+'deg) scale(1)';
-
+  el.classList.add('open'); el.style.transform='rotate('+(waters*22)+'deg) scale(1)';
   if(waters>=5){
     document.getElementById('waterCan').style.pointerEvents='none';
     document.getElementById('waterCan').style.opacity='0.4';
@@ -467,13 +420,12 @@ function waterFlower(e){
   }
 }
 
-// ===== PHOTO SLIDESHOW (Auto + Swipe) =====
-const TOTAL=11; const DELAY=3500;
-let cur=0; let slideTimer=null; let isDragging=false; let startX=0; let startY=0;
+// SLIDESHOW — 22 ảnh
+const TOTAL=22; const DELAY=3500;
+let cur=0, slideTimer=null, isDragging=false, startX=0;
 
 function buildDots(){
-  const wrap=document.getElementById('swipeDots');
-  wrap.innerHTML='';
+  const wrap=document.getElementById('swipeDots'); wrap.innerHTML='';
   for(let i=0;i<TOTAL;i++){
     const d=document.createElement('div'); d.className='dot'+(i===0?' active':'');
     wrap.appendChild(d);
@@ -481,90 +433,77 @@ function buildDots(){
 }
 
 function showSlide(idx){
-  const track=document.getElementById('slidesTrack');
-  track.style.transform='translateX(-'+idx+'00%)';
+  document.getElementById('slidesTrack').style.transform='translateX(-'+idx+'00%)';
   document.getElementById('pNum').textContent='🌼 Ảnh '+(idx+1)+' / '+TOTAL+' 🌼';
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
   const bar=document.getElementById('progBar');
   bar.style.transition='none'; bar.style.width='0%';
-  setTimeout(()=>{bar.style.transition='width '+DELAY+'ms linear'; bar.style.width='100%';},30);
+  setTimeout(()=>{ bar.style.transition='width '+DELAY+'ms linear'; bar.style.width='100%'; },30);
 }
 
 function schedNext(){
   clearTimeout(slideTimer);
   slideTimer=setTimeout(()=>{
-    cur++; if(cur>=TOTAL){goPage('p4');}
-    else{showSlide(cur); schedNext();}
+    cur++; if(cur>=TOTAL) goPage('p4');
+    else{ showSlide(cur); schedNext(); }
   },DELAY);
 }
 
-function startSlideshow(){
-  buildDots(); cur=0; showSlide(0); schedNext();
-}
+function startSlideshow(){ buildDots(); cur=0; showSlide(0); schedNext(); }
 
-// Touch swipe
 const pb=document.getElementById('photoBox');
-pb.addEventListener('touchstart',e=>{startX=e.touches[0].clientX; startY=e.touches[0].clientY; isDragging=true;},{passive:true});
+pb.addEventListener('touchstart',e=>{ startX=e.touches[0].clientX; isDragging=true; },{passive:true});
 pb.addEventListener('touchend',e=>{
   if(!isDragging) return;
   const dx=e.changedTouches[0].clientX-startX;
-  const dy=e.changedTouches[0].clientY-startY;
-  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){
+  if(Math.abs(dx)>40){
     clearTimeout(slideTimer);
-    if(dx<0&&cur<TOTAL-1){cur++; showSlide(cur); schedNext();}
-    else if(dx>0&&cur>0){cur--; showSlide(cur); schedNext();}
+    if(dx<0&&cur<TOTAL-1){ cur++; showSlide(cur); schedNext(); }
+    else if(dx>0&&cur>0){ cur--; showSlide(cur); schedNext(); }
   }
   isDragging=false;
 });
-
-// Mouse swipe
-pb.addEventListener('mousedown',e=>{startX=e.clientX; isDragging=true;});
+pb.addEventListener('mousedown',e=>{ startX=e.clientX; isDragging=true; });
 pb.addEventListener('mouseup',e=>{
   if(!isDragging) return;
   const dx=e.clientX-startX;
   if(Math.abs(dx)>40){
     clearTimeout(slideTimer);
-    if(dx<0&&cur<TOTAL-1){cur++; showSlide(cur); schedNext();}
-    else if(dx>0&&cur>0){cur--; showSlide(cur); schedNext();}
+    if(dx<0&&cur<TOTAL-1){ cur++; showSlide(cur); schedNext(); }
+    else if(dx>0&&cur>0){ cur--; showSlide(cur); schedNext(); }
   }
   isDragging=false;
 });
 
-// Save & Share
 function savePhoto(){
   const imgs=document.querySelectorAll('.photo-slide-item img');
   const url=imgs[cur]?.src;
-  if(!url){alert('Không tải được ảnh!');return;}
+  if(!url){ alert('Không tải được ảnh!'); return; }
   const a=document.createElement('a'); a.href=url; a.download='anh-me-'+(cur+1)+'.jpg';
   a.target='_blank'; a.click();
 }
 function sharePage(){
   const txt='💛 Trang chúc mừng 8/3 dành cho Mẹ yêu! 🌻🌸🌼';
-  if(navigator.share){navigator.share({title:'Chúc Mừng 8/3 Mẹ!',text:txt,url:location.href});}
-  else{navigator.clipboard.writeText(location.href+'\n'+txt).then(()=>alert('✅ Đã sao chép link! Gửi cho Mẹ nha! 💛'));}
+  if(navigator.share) navigator.share({title:'Chúc Mừng 8/3 Mẹ!',text:txt,url:location.href});
+  else navigator.clipboard.writeText(location.href+'\n'+txt).then(()=>alert('✅ Đã sao chép link! Gửi cho Mẹ nha! 💛'));
 }
 
-// ===== FIREWORKS =====
 function launchFireworks(){
   const colors=['#f5c518','#e07030','#56ab2f','#ff6b9d','#fff176','#a8e063','#ff9ec4','#88d8ff'];
   for(let b=0;b<6;b++){
     setTimeout(()=>{
-      const cx=20+Math.random()*60+'vw';
-      const cy=20+Math.random()*40+'vh';
+      const cx=20+Math.random()*60+'vw', cy=20+Math.random()*40+'vh';
       for(let i=0;i<22;i++){
         const p=document.createElement('div'); p.className='fw-particle';
-        const angle=Math.random()*360; const dist=80+Math.random()*120;
-        const tx=Math.cos(angle*Math.PI/180)*dist+'px';
-        const ty=Math.sin(angle*Math.PI/180)*dist+'px';
+        const angle=Math.random()*360, dist=80+Math.random()*120;
+        const tx=Math.cos(angle*Math.PI/180)*dist+'px', ty=Math.sin(angle*Math.PI/180)*dist+'px';
         p.style.cssText=`left:${cx};top:${cy};width:8px;height:8px;background:${colors[Math.floor(Math.random()*colors.length)]};--tx:${tx};--ty:${ty};animation-duration:${0.8+Math.random()*.6}s;animation-delay:${Math.random()*.2}s`;
-        document.body.appendChild(p);
-        setTimeout(()=>p.remove(),1600);
+        document.body.appendChild(p); setTimeout(()=>p.remove(),1600);
       }
     },b*300);
   }
 }
 
-// ===== LETTER =====
 function openLetter(){
   document.getElementById('envEl').style.display='none';
   document.getElementById('letEl').style.display='block';
